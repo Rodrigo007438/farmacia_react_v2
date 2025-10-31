@@ -22,7 +22,6 @@ function Farmacia_page() {
   const [remedio_selecionado, remedio_definido] = useState(null);
 
   
-  
   // --- 2. EFEITO (BUSCAR DADOS INICIAIS) ---
   useEffect(() => {
     
