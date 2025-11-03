@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import { Navigate, useNavigate } from "react-router-dom";
 
-import '../App';
+import {toast} from 'react-toastify';
+
+import '../App.css';
 
 function LoginPage(){
     const [username, set_username] = useState('');
@@ -15,15 +17,23 @@ function LoginPage(){
         event.preventDefault();
 
         if(username ==='admin' && password === 'admin123'){
-            alert('Login como gerente bem-sucedido');
+            toast.success('Login como gerente bem-sucedido');
             localStorage.setItem('perfil_usuario', 'gerente');
+            
+            window.dispatchEvent(new Event('storageChange'));
+            
             navigate('/'); //redireciona para a pagina principal
         }else if(username === 'cliente' && password === 'cliente123'){
-            alert('Login como cliente bem-sucedido');
+            toast.success('Login como cliente bem-sucedido');
             localStorage.setItem('perfil_usuario', 'cliente');
+
+            window.dispatchEvent(new Event('storageChange'));
+
+            localStorage.setItem('email_usuario' , 'cliente.teste@email.com');
+
             navigate('/');
         }else{
-            alert('Usuario ou senha incorreto');
+            toast.error('Usuario ou senha incorreto');
         }
     };
     return(
