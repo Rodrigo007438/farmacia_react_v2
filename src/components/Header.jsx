@@ -1,61 +1,75 @@
 import React, { useEffect, useState } from "react";
-// O 'Link' é necessário para o logo
+
 import { Link, useNavigate } from "react-router-dom"; 
 
 import '../App.css';
 
 function Header(){
-    const [logado, set_logado] = useState(false);
-    const navigate = useNavigate();
+    const [logado, set_logado] = useState(false);
+    const [perfil_nome, set_perfil_nome] = useState('');
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const perfil = localStorage.getItem('perfil_usuario'); 
-        
-        if(perfil){
-            set_logado(true);
-        }else{
-            set_logado(false);
-        }
-        window.addEventListener('storageChange', checar_login)
+    useEffect(() => {
 
-        return() => {
-            window.removeEventListener('storageChange', checar_login);
-        }
-    }, []);
+      checar_login();
 
-    const checar_login = () => {
-        const perfil = localStorage.getItem('perfil_usuario');
-        set_logado(!!perfil);
-    };
+      
+        window.addEventListener('storageChange', checar_login)
 
-    const handle_logout = () => {
-        localStorage.removeItem('perfil_usuario');
-        localStorage.removeItem('email_usuario');
-        window.dispatchEvent(new Event('storageChange'));
-        navigate('/login');
-    };
+        return() => {
+          window.removeEventListener('storageChange', checar_login);
+        }
+    }, []);
 
-    return(
-        // CORREÇÃO 1: Nomes das classes (className) com hífen
-        <header className="site-header">
-            <div className="container-layout">
+    const checar_login = () => {
+      const perfil = localStorage.getItem('perfil_usuario');
+      if(perfil){
+        set_logado(true);
+        const primeira_letra = perfil.charAt(0).toUpperCase() + perfil.slice(1);
+        set_perfil_nome(primeira_letra);
+      }else{
+        set_logado(false);
+        set_perfil_nome('');
+      }
+    };
+
+    const handle_logout = () => {
+        localStorage.removeItem('perfil_usuario');
+        localStorage.removeItem('email_usuario');
+        window.dispatchEvent(new Event('storageChange'));
+        navigate('/login');
+     };
+
+       return(
+  
+         <header className="site-header">
+           <div className="container-layout">
               
-              {/* CORREÇÃO 2: Adicionando o Link/Logo de volta */}
+             
               <Link to="/" className="header-logo">
                 Farmácia Popular
               </Link>
-            
-                <nav>
-                    {logado && (
-                        // CORREÇÃO 1: Nome da classe do botão
-                        <button onClick={handle_logout} className="header-logout-btn">
-                          Sair
-                        </button>
-                    )}
-                </nav>
-            </div>
-        </header>
-    );
+ 
+                 <nav className="header-nav">
+        
+                  <Link to = '/loja' className="nav-link">Loja</Link>
+
+                   {logado ? (
+                      <div className="user_info">
+                        <span className="user_name_tag">{perfil_nome}</span>
+                      
+                      <button onClick={handle_logout} className="header-logout-btn">
+                        Sair
+                      </button>
+                    </div>
+                   ):(
+                    null  
+                    )}
+                         
+                  </nav>
+            </div>
+          </header>
+       );
 }
 
 export default Header;
