@@ -2,16 +2,16 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from './Header';
 
-function Layout_principal(){
+function LayoutPrincipal(){
     return(
         <>
-            <Header>
+            <Header />
                 <main className="site_content">
                     <Outlet />
                 </main>
-            </Header>
+           
         </>
     )
 }
 
-export default Layout_principal;
+export default LayoutPrincipal;
