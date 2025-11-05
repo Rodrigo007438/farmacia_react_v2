@@ -14,9 +14,9 @@ const API_URL = 'https://69010550ff8d792314bc5118.mockapi.io/farmacia_api';
 
 
 
-function Farmacia_page() {
+function FarmaciaPage() {
 
-  const navigate = useNavigate();
+  
   // --- 1. ESTADO ---
   const [remedios, set_remedios] = useState([]);
   const [pedidos, set_pedidos] = useState([]); 
@@ -190,11 +190,12 @@ function Farmacia_page() {
     );
   
 
-  if (!remedio_correspondente){
-    toast.error('Erro: Não foi possível encontrar o remedio desse pedido estornar o estoque');
-    cancela();
-    return; 
-  }
+    if (!remedio_correspondente){
+      toast.error('Erro: Não foi possível encontrar o remedio desse pedido estornar o estoque');
+      cancela();
+      return; 
+    }
+    
 
     // 2. Calcula o estorno
     const remedio_id = remedio_correspondente.id;
@@ -325,4 +326,4 @@ function Farmacia_page() {
 }
 
 
-export default Farmacia_page;
+export default FarmaciaPage;
