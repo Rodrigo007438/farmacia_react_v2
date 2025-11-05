@@ -38,9 +38,7 @@ function LoginPage(){
     };
     return(
         <>
-        <header>
-            <h1>Farmacia Popular - Login</h1>
-        </header>
+        
         <main>
             <section className='login_card'>
                 <form id='form_login' onSubmit={enviar_login}>
