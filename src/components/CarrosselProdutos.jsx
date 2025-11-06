@@ -3,6 +3,16 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import '../App.css';
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import { useState } from "react";
 
 const API_URL = 'https://69010550ff8d792314bc5118.mockapi.io/farmacia_api';
@@ -36,16 +46,20 @@ function CarrosselProdutos(){
     return(
         <div className='carrossel-container'>
             <h2>Produtos em Destaque</h2>
-            <div className="carrossel-trilho">
+            <Swiper modules={[Navigation, Pagination]} navigation pagination={{clickable: true}} spaceBetween={20} slidesPerView={'auto'} className="carrossel-swiper">
+
                 {produtos.map((produto) =>(
-                <div key={produto.id} className="remedio_card carrossel-card">
-                    <img src={produto.image_url || produto.avatar} alt={produto.name} />
-                    <h3>{produto.name}</h3>
-                    <p className='preco'>R$ {produto.preco}</p>
-                    <Link to = '/loja' className='carrossel-botao'>Ver na Loja</Link>
-                </div>    
+
+                <SwiperSlide key={produto.id} className="carrossel-slide">
+                    <div className="remedio_card">
+                        <img src={produto.imagem_url || produto.avatar} alt={produto.name} />
+                        <h3>{produto.name}</h3>
+                        <p className='preco'>R$ {produto.preco}</p>
+                        <Link to = '/loja' className='home-cta-button'>Ver na Loja</Link>
+                    </div>    
+                </SwiperSlide>    
                 ))}
-            </div>
+            </Swiper>    
         </div>
     );
 }
