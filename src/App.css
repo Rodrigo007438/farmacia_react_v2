@@ -322,6 +322,7 @@ header{
 .carrossel-container{
   width: 100%;
   margin-top: 40px;
+  position: relative;
 }
 
 .carrossel-container h2{
@@ -330,32 +331,55 @@ header{
   color: #333;
 }
 
-.carrossel-trilho{
-  display: flex;
-  overflow-x: auto; /*barra de rolagem horizontal*/
-  padding: 20px 10px;
-  gap: 20px;
-}
-
-.carrossel-card{
-  flex: 5 0 300px;
-}
-
-.carrossel-botao{
-  align-items: center;
-  display: block;
-  background-color: #21973d;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 1px;
-  border-radius: 5px;
-  cursor: pointer;
+.carrossel-swiper{
+  padding: 20px 10px 40px 10px;
   width: 100%;
-  text-align: center;
-  transition: background-color 0.3 ease;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
 }
 
-.carrossel-botao:hover{
-  background-color: #218838;
+.carrossel-swiper .swiper-button-prev {
+  left: 10px; /* Pequena margem da borda */
 }
+
+.carrossel-swiper .swiper-button-next {
+  right: 10px; /* Pequena margem da borda */
+}
+
+.carrossel-slide{
+  width: 300px;
+  height: auto;
+}
+
+.carrossel-slide .remedio_card{
+  width: 90%; 
+  max-width: 300px; 
+  min-width: 250px; 
+  margin: 0 auto; 
+}
+
+.carrossel-swiper .swiper-button-next,
+.carrossel-swiper .swiper-button-prev{
+  color: #28a745;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-40px); 
+}
+
+.carrossel-swiper .swiper-pagination-bullet{
+  background-color: #28a745;
+  opacity: 0.5;
+}
+
+.carrossel-swiper .swiper-pagination-bullet-active{
+  opacity: 1;
+}
+
+.carrossel-swiper .swiper-button-next::after,
+.carrossel-swiper .swiper-button-prev::after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
