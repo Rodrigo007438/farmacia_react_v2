@@ -51,21 +51,25 @@ function Header(){
               </Link>
  
                  <nav className="header-nav">
-        
-                  <Link to = '/loja' className="nav-link">Loja</Link>
 
+                  {logado && (
+                   <Link to = '/loja' className="nav-link">Loja</Link>
+                  )}
+
+                   {perfil_nome === 'cliente' && (
+                      <Link to='/meus-pedidos' className="nav-link"> Meus Pedidos </Link>
+                   )}
+                    {perfil_nome === 'gerente' &&(
+                      <Link to="/admin/pedidos" className="nav-link">Painel</Link>
+                   )}
                    {logado ? (
-                      <div className="user_info">
-                        <span className="user_name_tag">{perfil_nome}</span>
-                      
-                      <button onClick={handle_logout} className="header-logout-btn">
-                        Sair
-                      </button>
-                    </div>
-                   ):(
-                    null  
-                    )}
-                         
+                      <div className="user-info-group">
+                        <span className="user-name-tag">{perfil_nome}</span>
+                        <button onClick={handle_logout} className="header-logout-btn">Sair</button>
+                      </div>
+                    ):(
+                      <Link to='/login' className="nav-link">Entrar</Link>
+                    )}    
                   </nav>
             </div>
           </header>
