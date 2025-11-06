@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //Importando as outras paginas
-
-
-import FarmaciaPage from "../src/page/FarmaciaPage";
+import HomePage from "./page/HomePage";
+import LojaPage from "./page/LojaPage";
 import LoginPage from '../src/page/login_page';
 import LayoutPrincipal from "./components/LayoutPrincipal";
-import HomePage from "./page/HomePage";
+import MeusPedidos from './page/MeusPedidos';
+
 
 
 
@@ -27,7 +27,9 @@ function App(){
           <Route path="/login" element={<LoginPage />} />
           
           <Route element={<LayoutProtegido/>}>
-            <Route path='/loja' element={<FarmaciaPage/>}/>
+            <Route path='/loja' element={<LojaPage/>}/>
+
+            <Route path="/meus-pedidos" element={<MeusPedidos />} />
 
           </Route>  
 
