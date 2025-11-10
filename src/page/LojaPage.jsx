@@ -55,11 +55,10 @@ function LojaPage(){
   event.preventDefault();
 
   const dados_pedidos = {
-  remedio_nome: remedio_selecionado.name,
-  remedio_preco: remedio_selecionado.preco,
-   nome_cliente: event.target.nome_cliente.value,
-            // CORREÇÃO 3: 'event.taget' -> 'event.target'
-   email_cliente: event.target.email_cliente.value 
+    remedio_nome: remedio_selecionado.name,
+    remedio_preco: remedio_selecionado.preco,
+    nome_cliente: event.target.nome_cliente.value,
+    email_cliente: event.target.email_cliente.value 
    };
 
    const remedio_id = remedio_selecionado.id;
@@ -90,28 +89,38 @@ function LojaPage(){
    return(
    <>
    
-   <main id='catalogo_remedios'>
-   {remedios.map((remedio) => (
-   <div key={remedio.id} className='remedio_card'>
-   <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name} />
-   <h3>{remedio.name}</h3>
-   <p className='preco'>R$ {remedio.preco}</p>
-   <p><strong>Estoque: {remedio.quantidade_estoque}</strong></p>
-   <button onClick={() => abrir_form(remedio)}>Fazer Pedido</button>
-  </div>
-   ))}
+    <main id='catalogo_remedios'>
+      {remedios.map((remedio) => (
+      <div key={remedio.id} className='remedio_card'>
+        <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name} />
+        <h3>{remedio.name}</h3>
+        <p className='preco'>R$ {remedio.preco}</p>
+        <p><strong>Estoque: {remedio.quantidade_estoque}</strong></p>
+        <button onClick={() => abrir_form(remedio)}>Fazer Pedido</button>
+      </div>
+    ))}
    </main>
 
    {abrir_modal && (
    <div id='modal_pedidos_overlay'>
   <form id='form_pedidos' onSubmit={criar_pedido}>
-            {/* ... (o modal de criar pedido está incompleto, 
-            mas o foco é corrigir os erros) ... */}
+      <h3>Confirma Pedido:</h3>
+      <p>Você esta pedindo: <strong id="form_remedio_nome">{remedio_selecionado.name}</strong></p>
+      <div>
+        <label htmlFor="nome_cliente">Seu Nome:</label>
+        <input type="text" id="nome_cliente" name="nome_cliente" required />
+      </div>
+      <div>
+        <label htmlFor="email_cliente">Seu Email:</label>
+        <input type="email" id="email_cliente" name="email_cliente" required />
+      </div>
+      <button type="submit">Confirmar</button>
+      <button type="button" id="cancela_pedido" onClick={fechar_form}>Cancelar Pedido</button>
   </form>
   </div>
   )}
    </>
    );
-} // <-- A função LojaPage fecha aqui
+}
 
 export default LojaPage;
