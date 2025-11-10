@@ -6,13 +6,36 @@ import { toast } from "react-toastify";
 
 const API_URL = 'https://69010550ff8d792314bc5118.mockapi.io/farmacia_api';
 
+const novo_form = {
+    name:'',
+    preco: '',
+    quantidade_estoque:'',
+    imagem_url:''
+};
+
+
 function AdminProdutos(){
 
     const [remedios, set_remedios] = useState([]);
     const [carrega, set_carrega] = useState(true);
 
+
+    //Para excluir
     const [confirmar, set_confirmar] = useState(false);
     const [produto_deletar, set_produto_deleta] = useState(null);
+
+    //Para editar
+    const [modal_aberto, set_modal_aberto] = useState(false);
+    const [produto_editando, set_produto_editando] = useState(null);
+    const [form_data, set_form_data] = useState({
+        name: '',
+        preco: '',
+        quantidade_estoque: ''
+    });
+
+    //Para Adicionar Novo
+    const [modal_add_aberto, set_add_aberto] = useState(false);
+    const [form_data_novo, set_data_novo] = useState(novo_form)
 
     useEffect(() => {
         async function buscarRemedios() {
@@ -64,6 +87,118 @@ function AdminProdutos(){
         }
     };
 
+    const abre_modal_edicao = (produto) => {
+    set_produto_editando(produto);
+    set_form_data({
+        name: produto.name,
+        // Garante que o input carregue com ponto
+        preco: String(produto.preco).replace(',', '.'), 
+        quantidade_estoque: produto.quantidade_estoque
+    });
+    }   
+
+    const abrir_modal_add = () =>{
+        set_data_novo(novo_form);
+        set_add_aberto(true);
+    };
+
+    const fechar_modal_add =() =>{
+        set_add_aberto(false);
+    };
+
+    const trocando_form_novo = (e) => {
+        const {name, value} = e.target;
+        set_data_novo(dados_anteriores =>({
+            ...dados_anteriores,
+            [name]: value
+        }));
+    };
+
+    const adicionando = async (e) => {
+        e.preventDefault();
+
+        const enviando_dados ={
+            name: form_data_novo.name,
+            preco: Number(String(form_data_novo.preco).replace(',', '.')),
+            quantidade_estoque: Number(form_data_novo.quantidade_estoque),
+            imagem_url: form_data_novo.imagem_url || null
+        };
+
+        try{
+            const response = await fetch(`${API_URL}/remedios`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(enviando_dados)
+            });
+            if(!response.ok) throw new Error('Falha ao criar produto');
+            const novo_produto = await response.json();
+
+            set_remedios(remedios_antigos => [...remedios_antigos, novo_produto]);
+
+            toast.success('Produto adicionado com sucesso');
+            fechar_modal_add();
+        }catch(error){
+            console.error('Erro ao adicionar produto:', error);
+            toast.error(error.message || 'Falha ao adicionar produto');
+        }
+    
+
+
+
+
+    set_modal_aberto(true); 
+};
+
+    const fechar_modal_edt = () => {
+        set_modal_aberto(false);
+        set_produto_editando(null);
+        set_form_data({name:'', preco:'', quantidade_estoque:''});
+    }
+
+    const trocando_form = (e) => {
+        const {name, value} = e.target;
+        set_form_data(dados_anteriores => ({
+            ...dados_anteriores,
+            [name]:value
+        }));
+    };
+
+    const enviando_edit = async (e) => {
+        e.preventDefault();
+        if(!produto_editando) return;
+        
+        const enviando_dados = {
+            name:form_data.name,
+            preco: Number(String(form_data.preco).replace(',','.')),
+            quantidade_estoque: Number(form_data.quantidade_estoque)
+        };
+
+        try{
+            const response = await fetch(`${API_URL}/remedios/${produto_editando.id}`,{
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(enviando_dados)
+            });
+
+            if(!response.ok) throw new Error('Falha ao atualizar produto');
+            const produto_atualizado = await response.json();
+
+            //atualizando lista de remedios na tela
+
+            set_remedios(remedios_antigos =>
+                remedios_antigos.map(r =>
+                    r.id === produto_editando.id ? produto_atualizado : r
+                )           
+             );
+
+             toast.success('Produto Atulizado com Sucesso!');
+             fechar_modal_edt();
+        }catch(error){
+            console.log('Erro ao digitar produto', error);
+            toast.error(error.message || 'Falha ao editar produto');
+        }
+    }
+
     if (carrega){
         return <p style={{textAlign: 'center'}}>Carregando Produtos...</p>;
     }
@@ -72,22 +207,22 @@ function AdminProdutos(){
         <>
         
         <div className="admin-header">
-            <h2 id="pedidos_titulo" style={{display: 'block'}}>Gerenciamento de Produtos</h2>
+            <h2 id="pedidos_titulo" style={{display: 'block', textAlign: 'center'}}>Gerenciamento de Produtos</h2>
             <button className="admin-add-btn">Adicionar Novo Produto</button>
         </div>
 
         <section id="lista_pedidos" style={{display: 'grid'}}>
 
-        {remedios.map((remedios) =>(
-            <div key={remedios.id} className="remedio_card">
+        {remedios.map((remedio) =>(
+            <div key={remedio.id} className="remedio_card">
 
-                <img src={remedios.imagem_url || remedios.avatar} alt={remedios.name}/>
-                <h3>{remedios.name}</h3>
-                <p className="preco">R$ {remedios.preco}</p>
-                <p><strong>Estoque: {remedios.quantidade_estoque}</strong></p>
+                <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name}/>
+                <h3>{remedio.name}</h3>
+                <p className="preco">R$ {remedio.preco}</p>
+                <p><strong>Estoque: {remedio.quantidade_estoque}</strong></p>
                 <div className="admin_botoes">
-                    <button className="admin-edt-btn">Editar</button>
-                    <button className="admin-delete-btn" onClick = {() => deletando(remedios)}>Excluir</button>
+                    <button className="admin-edt-btn" onClick={() => abre_modal_edicao(remedio)}>Editar</button>
+                    <button className="admin-delete-btn" onClick = {() => deletando(remedio)}>Excluir</button>
                 </div>
 
             </div>
@@ -113,6 +248,74 @@ function AdminProdutos(){
                     </div>
                 </div>
 
+            </div>
+        )}
+
+        {/* modal edição */}
+
+        {modal_aberto &&(
+
+            <div id="modal_pedidos_overlay">
+
+                <form id="form_pedidos" onSubmit={enviando_edit}>
+
+                    <h3>Editando: {produto_editando.name}</h3>
+
+                    <div>
+
+                        <label htmlFor="name">Nome do Produto:</label>
+                        <input type="text" id="name" name="name" value={form_data.name} onChange={trocando_form} required />
+
+                    </div>
+
+                    <div>
+
+                        <label htmlFor="preco">Preço: R$ </label>
+                        <input type="text" id="preco" name="preco" value={form_data.preco} onChange={trocando_form} required />
+
+                    </div>
+
+                    <div>
+
+                        <label htmlFor="quantidade_estoque">Estoque: </label>
+                        <input type="number" id="quantidade_estoque" name="quantidade_estoque" value={form_data.quantidade_estoque} onChange={trocando_form} required />
+                        
+                    </div>
+
+                    <button type="submit">Salvar Alterações</button>
+                    <button type="button" id="cancela_pedido" onClick={fechar_modal_edt}>Cancelar</button>
+
+                </form>
+
+            </div>
+
+        )}
+
+        {modal_add_aberto && (
+            <div id="modal_pedidos_overlay">
+                <form id="form_pedidos" onSubmit={enviando_adicionar}>
+                    <h3>Adicionar Novo Produto</h3>
+                    
+                    <div>
+                        <label htmlFor="name">Nome do Produto:</label>
+                        <input type="text" id="name" name="name" value={form_data_novo.name} onChange={trocando_form_novo} required />
+                    </div>
+                    <div>
+                        <label htmlFor="preco">Preço (R$):</label>
+                        <input type="text" id="preco" name="preco" value={form_data_novo.preco} onChange={trocando_form_novo} required />
+                    </div>
+                    <div>
+                        <label htmlFor="quantidade_estoque">Estoque:</label>
+                        <input type="number" id="quantidade_estoque" name="quantidade_estoque" value={form_data_novo.quantidade_estoque} onChange={trocando_form_novo} required />
+                    </div>
+                    <div>
+                        <label htmlFor="imagem_url">URL da Imagem (Opcional):</label>
+                        <input type="text" id="imagem_url" name="imagem_url" value={form_data_novo.imagem_url} onChange={trocando_form_novo} />
+                    </div>
+
+                    <button type="submit">Adicionar Produto</button>
+                    <button type="button" id="cancela_pedido" onClick={fechar_modal_adicionar}>Cancelar</button>
+                </form>
             </div>
         )}
         
