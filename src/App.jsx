@@ -7,7 +7,8 @@ import LoginPage from '../src/page/login_page';
 import LayoutPrincipal from "./components/LayoutPrincipal";
 import MeusPedidos from './page/MeusPedidos';
 
-
+import AdminPedidos from "./page/AdminPedidos";
+import AdminProdutos from "./page/AdminProdutos";
 
 
 
@@ -30,6 +31,8 @@ function App(){
             <Route path='/loja' element={<LojaPage/>}/>
 
             <Route path="/meus-pedidos" element={<MeusPedidos />} />
+            <Route path="/admin/pedidos" element={<AdminPedidos />} />
+            <Route path="/admin/produtos" element={<AdminProdutos />} />
 
           </Route>  
 
