@@ -30,6 +30,8 @@ header{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative; 
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .remedio_card img{
@@ -255,19 +257,6 @@ header{
   gap: 10px;
 }
 
-.user_name_tag{
-  background-color: #378b4b;
-  color: white;
-  cursor: default;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 0.9em;
-  white-space: nowrap; /*impede que o botão quebre a linha*/
-}
-
-
-
 .header-logout-btn{
   background-color: #e74545;
   color: white;
@@ -276,7 +265,7 @@ header{
   padding: 8px 15px;
   border-radius: 5px;
   font-weight: bold;
-  transition: background-color 0.3 ease;
+  transition: background-color 0.3s ease;
 }
 
 .header-logout-btn:hover{
@@ -354,7 +343,7 @@ header{
 }
 
 .carrossel-slide .remedio_card{
-  width: 90%; 
+  width: 100%; 
   max-width: 300px; 
   min-width: 250px; 
   margin: 0 auto; 
@@ -381,5 +370,113 @@ header{
 .carrossel-swiper .swiper-button-prev::after {
   font-size: 18px;
   font-weight: bold;
+}
+
+.user-name-tag {
+  background-color: #378b4b;
+  color: white;
+  cursor: default;
+  padding: 7px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .container-layout {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0;
+  }
+  
+  .header-nav {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .user-info-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.admin_botoes{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-top: auto;
+}
+
+.admin_botoes button{
+  width: 50%;
+}
+
+.remedio_card .admin-edt-btn{
+  background-color: #007bff;
+}
+
+.remedio_card .admin-edt-btn:hover{
+  background-color: #0056b3;
+}
+
+.remedio_card .admin-delete-btn{
+  background-color: #e74545;
+}
+
+.remedio_card .admin-delete-btn:hover {
+  background-color: #c41f37;
+}
+
+.btn-confirma{
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn-confirma button{
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-sim{
+  background-color: #e74545;
+  color: white;
+}
+#btn-sim:hover {
+  background-color: #c41f37;
+}
+
+/* Botão Não (Cinza) */
+#btn-nao {
+  background-color: #6c757d;
+  color: white;
+}
+#btn-nao:hover {
+  background-color: #5a6268;
+}
+
+.admin-add-btn{
+  padding: 12px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-add-btn{
+  background-color: #a8bbcf;
+}
+
+.admin-add-btn:hover{
+  background-color: #7b8b99;
 }
 
