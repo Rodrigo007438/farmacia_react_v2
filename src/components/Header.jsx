@@ -18,7 +18,7 @@ function Header(){
 
         return() => {
           window.removeEventListener('storageChange', checar_login);
-        }
+        };
     }, []);
 
     const checar_login = () => {
@@ -37,7 +37,7 @@ function Header(){
         localStorage.removeItem('perfil_usuario');
         localStorage.removeItem('email_usuario');
         window.dispatchEvent(new Event('storageChange'));
-        navigate('/login');
+        navigate('/login', {replace: true});
      };
 
        return(
@@ -56,11 +56,18 @@ function Header(){
                    <Link to = '/loja' className="nav-link">Loja</Link>
                   )}
 
-                   {perfil_nome === 'cliente' && (
+                   {perfil_nome === 'Cliente' && (
                       <Link to='/meus-pedidos' className="nav-link"> Meus Pedidos </Link>
                    )}
-                    {perfil_nome === 'gerente' &&(
-                      <Link to="/admin/pedidos" className="nav-link">Painel</Link>
+                    {perfil_nome === 'Gerente' &&(
+                      
+                      <>
+
+                      <Link to="/admin/pedidos" className="nav-link">Controle Pedidos</Link>
+                      <Link to="/admin/produtos" className="nav-link">Controle Produtos</Link>
+
+                      </>
+
                    )}
                    {logado ? (
                       <div className="user-info-group">
