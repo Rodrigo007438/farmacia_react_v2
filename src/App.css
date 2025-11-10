@@ -464,19 +464,20 @@ header{
 }
 
 .admin-add-btn{
-  padding: 12px 15px;
+  background-color: #28a745;
+  color: white;
   border: none;
+  padding: 10px 15px;
   border-radius: 5px;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
   transition: background-color 0.3s ease;
-}
-
-.admin-add-btn{
-  background-color: #a8bbcf;
+  margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .admin-add-btn:hover{
-  background-color: #7b8b99;
+  background-color: #218838;
 }
 
