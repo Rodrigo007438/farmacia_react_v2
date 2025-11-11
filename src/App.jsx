@@ -10,7 +10,7 @@ import MeusPedidos from './page/MeusPedidos';
 import AdminPedidos from "./page/AdminPedidos";
 import AdminProdutos from "./page/AdminProdutos";
 
-
+import { AuthProvider } from "./components/AuthContext";
 
 import LayoutProtegido from "./components/layout_protegido";
 import { ToastContainer } from "react-toastify";
@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App(){
   return(
+    <AuthProvider>
     <BrowserRouter>
     <ToastContainer autoClose={300} hideProgressBar />
       <Routes>
@@ -42,6 +43,7 @@ function App(){
        
       
     </BrowserRouter>
+    </AuthProvider>
   )
 }
 
