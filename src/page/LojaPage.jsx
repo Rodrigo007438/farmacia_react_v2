@@ -9,6 +9,9 @@ function LojaPage(){
   const [abrir_modal, modal_aberto] = useState(false);
   const [remedio_selecionado, remedio_definido] = useState(null);
 
+  const [quantidade_pedido, set_quantidade] = useState(1);
+  const [buscar, set_busca] = useState('');
+
   useEffect(() => {
     async function buscar_remedios() {
    console.log('Buscando remedios com React...');
@@ -29,6 +32,7 @@ function LojaPage(){
   return;
   }
   remedio_definido(remedio);
+  set_quantidade(1);
   modal_aberto(true);
     };
 
@@ -54,16 +58,35 @@ function LojaPage(){
   const criar_pedido = async (event) =>{
   event.preventDefault();
 
+  const quantidade_final = Number(quantidade_pedido);
+
+  if(quantidade_final <= 0) {
+    toast.warn('A quantidade deve ser pelo menos 1');
+    return;
+  }
+
+  if(quantidade_final > remedio_selecionado.quantidade_estoque){
+    toast.error(`Desculpe, temos apenas ${remedio_selecionado.quantidade_estoque} em estoque`);
+    return;
+  }
+
+  const preco_sujo = String(remedio_selecionado.preco);
+
+  const preco_limpo = preco_sujo.replace(/[^0-9,]/g, '').replace(',','.');
+
+  const preco_unitario = Number(preco_limpo);
+  const calculo_total = preco_unitario * quantidade_final;
   const dados_pedidos = {
     remedio_nome: remedio_selecionado.name,
-    remedio_preco: remedio_selecionado.preco,
+    remedio_preco: calculo_total.toFixed(2),
     nome_cliente: event.target.nome_cliente.value,
-    email_cliente: event.target.email_cliente.value 
+    email_cliente: event.target.email_cliente.value,
+    quantidade_pedida: quantidade_final
    };
 
    const remedio_id = remedio_selecionado.id;
    const estoque_atual = Number(remedio_selecionado.quantidade_estoque);
-   const novo_estoque = estoque_atual -1;
+   const novo_estoque = estoque_atual - quantidade_final;
 
    try{
    const response = await fetch(`${API_URL}/pedidos`, {
@@ -86,11 +109,21 @@ function LojaPage(){
    }
    };
 
+   const produto_filtrado = remedios.filter(remedios =>
+    remedios.name.toLowerCase().includes(buscar.toLocaleLowerCase())
+   );
+
+
    return(
    <>
-   
+
+    <div className="buscar-container">
+      <input type="text" className="barra-busca" placeholder="Buscar remedios" value={buscar} onChange={(e) => set_busca(e.target.value)}/>
+
+    </div>
+
     <main id='catalogo_remedios'>
-      {remedios.map((remedio) => (
+      {produto_filtrado.map((remedio) => (
       <div key={remedio.id} className='remedio_card'>
         <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name} />
         <h3>{remedio.name}</h3>
@@ -106,6 +139,16 @@ function LojaPage(){
   <form id='form_pedidos' onSubmit={criar_pedido}>
       <h3>Confirma Pedido:</h3>
       <p>Você esta pedindo: <strong id="form_remedio_nome">{remedio_selecionado.name}</strong></p>
+
+      <div className="form_quantidade">
+        <div>
+          <label htmlFor="quantidade_pedido">Quantidade:</label>
+          <input type="number" id="quantidade_pedido" name="quantidade_pedido" min='1' max={remedio_selecionado.quantidade_estoque}
+          value={quantidade_pedido} onChange={(e) => set_quantidade(e.target.value)} required/>
+        </div>
+        <p>Disponivel: {remedio_selecionado.quantidade_estoque}</p>
+      </div>
+
       <div>
         <label htmlFor="nome_cliente">Seu Nome:</label>
         <input type="text" id="nome_cliente" name="nome_cliente" required />
