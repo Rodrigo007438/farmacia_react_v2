@@ -4,41 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 
 import '../App.css';
 
+import { useAuth } from '../components/AuthContext';
+
 function Header(){
-    const [logado, set_logado] = useState(false);
-    const [perfil_nome, set_perfil_nome] = useState('');
+
+    const {perfil, logout} = useAuth();
     const navigate = useNavigate();
-
-    useEffect(() => {
-
-      checar_login();
-
-      
-        window.addEventListener('storageChange', checar_login)
-
-        return() => {
-          window.removeEventListener('storageChange', checar_login);
-        };
-    }, []);
-
-    const checar_login = () => {
-      const perfil = localStorage.getItem('perfil_usuario');
-      if(perfil){
-        set_logado(true);
-        const primeira_letra = perfil.charAt(0).toUpperCase() + perfil.slice(1);
-        set_perfil_nome(primeira_letra);
-      }else{
-        set_logado(false);
-        set_perfil_nome('');
-      }
+    
+    const handle_logout = () =>{
+      logout();
+      navigate('/login', {replace:true});
     };
 
-    const handle_logout = () => {
-        localStorage.removeItem('perfil_usuario');
-        localStorage.removeItem('email_usuario');
-        window.dispatchEvent(new Event('storageChange'));
-        navigate('/login', {replace: true});
-     };
+    const perfil_nome = perfil ? perfil.charAt(0).toUpperCase() + perfil.slice(1) : '';
+
 
        return(
   
@@ -52,31 +31,31 @@ function Header(){
  
                  <nav className="header-nav">
 
-                  {logado && (
+                  {perfil && (
                    <Link to = '/loja' className="nav-link">Loja</Link>
                   )}
 
-                   {perfil_nome === 'Cliente' && (
+                   {perfil === 'cliente' && (
                       <Link to='/meus-pedidos' className="nav-link"> Meus Pedidos </Link>
                    )}
-                    {perfil_nome === 'Gerente' &&(
-                      
+                    {perfil === 'gerente' &&(
                       <>
+                      
+                        <Link to='/admin/pedidos' className="nav-link">Gererenciador de Pedidos</Link>
+                        <Link to='/admin/produtos' className="nav-link">Gerenciador de Produtos</Link>
+                        </>
+                    )}
 
-                      <Link to="/admin/pedidos" className="nav-link">Controle Pedidos</Link>
-                      <Link to="/admin/produtos" className="nav-link">Controle Produtos</Link>
-
-                      </>
-
-                   )}
-                   {logado ? (
+                    {perfil ? (
                       <div className="user-info-group">
                         <span className="user-name-tag">{perfil_nome}</span>
                         <button onClick={handle_logout} className="header-logout-btn">Sair</button>
                       </div>
                     ):(
+
                       <Link to='/login' className="nav-link">Entrar</Link>
-                    )}    
+                   )}
+                   
                   </nav>
             </div>
           </header>
