@@ -78,7 +78,8 @@ function AdminPedidos(){
 
         const remedio_id = remedio_correspondente.id;
         const estoque_atual = Number(remedio_correspondente.quantidade_estoque);
-        const novo_estoque = estoque_atual +1;
+        const quantidade_extorno = Number(deleta.quantidade_pedida || 1);
+        const novo_estoque = estoque_atual + quantidade_extorno;
 
         try{
             await atualizar_estoque(remedio_id, novo_estoque);
@@ -114,6 +115,7 @@ function AdminPedidos(){
                         <div key={pedido.id} className="pedido_card">
                             <h4>Pedido de: {pedido.nome_cliente}</h4>
                             <p>Email: {pedido.email_cliente}</p>
+                            <p>Quantidade pedida: {pedido.quantidade_pedida}</p>
                             <hr />
                             <p><strong>Remedio:</strong>{pedido.remedio_nome}</p>
                             <p><strong>Preço:</strong>{pedido.remedio_preco}</p>
