@@ -1,10 +1,12 @@
 import React from "react";
 import {Navigate, Outlet } from "react-router-dom";
 
+import { useAuth } from "./AuthContext";
+
 //Verificador de Login
 
 const Layout_protegido = () =>{
-    const perfil = localStorage.getItem('perfil_usuario');
+    const {perfil} = useAuth();
 
     if(!perfil){
         return <Navigate to='/login' replace />
