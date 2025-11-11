@@ -37,6 +37,9 @@ function AdminProdutos(){
     const [modal_add_aberto, set_add_aberto] = useState(false);
     const [form_data_novo, set_data_novo] = useState(novo_form)
 
+    //barra de busca
+    const [busca, setBusca] = useState('');
+
     useEffect(() => {
         async function buscarRemedios() {
             set_carrega(true);
@@ -91,64 +94,15 @@ function AdminProdutos(){
     set_produto_editando(produto);
     set_form_data({
         name: produto.name,
-        // Garante que o input carregue com ponto
         preco: String(produto.preco).replace(',', '.'), 
         quantidade_estoque: produto.quantidade_estoque
     });
+
+    set_modal_aberto(true);
+
     }   
 
-    const abrir_modal_add = () =>{
-        set_data_novo(novo_form);
-        set_add_aberto(true);
-    };
-
-    const fechar_modal_add =() =>{
-        set_add_aberto(false);
-    };
-
-    const trocando_form_novo = (e) => {
-        const {name, value} = e.target;
-        set_data_novo(dados_anteriores =>({
-            ...dados_anteriores,
-            [name]: value
-        }));
-    };
-
-    const adicionando = async (e) => {
-        e.preventDefault();
-
-        const enviando_dados ={
-            name: form_data_novo.name,
-            preco: Number(String(form_data_novo.preco).replace(',', '.')),
-            quantidade_estoque: Number(form_data_novo.quantidade_estoque),
-            imagem_url: form_data_novo.imagem_url || null
-        };
-
-        try{
-            const response = await fetch(`${API_URL}/remedios`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(enviando_dados)
-            });
-            if(!response.ok) throw new Error('Falha ao criar produto');
-            const novo_produto = await response.json();
-
-            set_remedios(remedios_antigos => [...remedios_antigos, novo_produto]);
-
-            toast.success('Produto adicionado com sucesso');
-            fechar_modal_add();
-        }catch(error){
-            console.error('Erro ao adicionar produto:', error);
-            toast.error(error.message || 'Falha ao adicionar produto');
-        }
     
-
-
-
-
-    set_modal_aberto(true); 
-};
-
     const fechar_modal_edt = () => {
         set_modal_aberto(false);
         set_produto_editando(null);
@@ -199,16 +153,71 @@ function AdminProdutos(){
         }
     }
 
+    const abrir_modal_add = () =>{
+        set_data_novo(novo_form);
+        set_add_aberto(true);
+    };
+
+    const fechar_modal_add = () =>{
+        set_add_aberto(false);
+    };
+
+    const trocando_form_novo = (e) => {
+        const {name, value} = e.target;
+        set_data_novo(dados_anteriores =>({
+            ...dados_anteriores,
+            [name]: value
+        }));
+    };
+
+    const adicionando = async (e) => {
+        e.preventDefault();
+
+        const enviando_dados = {
+            name: form_data_novo.name,
+            preco: Number(String(form_data_novo.preco).replace(',', '.')),
+            quantidade_estoque: Number(form_data_novo.quantidade_estoque),
+            imagem_url: form_data_novo.imagem_url || null
+        };
+
+        try{
+            const response = await fetch(`${API_URL}/remedios`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(enviando_dados)
+            });
+            if(!response.ok) throw new Error('Falha ao criar produto');
+            const novo_produto = await response.json();
+
+            set_remedios(remedios_antigos => [...remedios_antigos, novo_produto]);
+
+            toast.success('Produto adicionado com sucesso');
+            fechar_modal_add();
+        }catch(error){
+            console.error('Erro ao adicionar produto:', error);
+            toast.error(error.message || 'Falha ao adicionar produto');
+        }
+    };
+
+
     if (carrega){
         return <p style={{textAlign: 'center'}}>Carregando Produtos...</p>;
     }
 
+    const produto_filtrado = remedios.filter(remedio => 
+        remedio.name.toLowerCase().includes(busca.toLowerCase())
+    );
+
     return(
         <>
+
+        <div className="busca-container">
+            <input type="text" className="barra-busca" placeholder="Buscar por nome..." value={busca} onChange={(e) => setBusca(e.target.value)} />
+        </div>
         
         <div className="admin-header">
             <h2 id="pedidos_titulo" style={{display: 'block', textAlign: 'center'}}>Gerenciamento de Produtos</h2>
-            <button className="admin-add-btn">Adicionar Novo Produto</button>
+            <button className="admin-add-btn" onClick={abrir_modal_add}>Adicionar Novo Produto</button>
         </div>
 
         <section id="lista_pedidos" style={{display: 'grid'}}>
@@ -293,7 +302,7 @@ function AdminProdutos(){
 
         {modal_add_aberto && (
             <div id="modal_pedidos_overlay">
-                <form id="form_pedidos" onSubmit={enviando_adicionar}>
+                <form id="form_pedidos" onSubmit={adicionando}>
                     <h3>Adicionar Novo Produto</h3>
                     
                     <div>
@@ -314,7 +323,7 @@ function AdminProdutos(){
                     </div>
 
                     <button type="submit">Adicionar Produto</button>
-                    <button type="button" id="cancela_pedido" onClick={fechar_modal_adicionar}>Cancelar</button>
+                    <button type="button" id="cancela_pedido" onClick={fechar_modal_add}>Cancelar</button>
                 </form>
             </div>
         )}
