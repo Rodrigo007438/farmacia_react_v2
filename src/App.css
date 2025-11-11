@@ -15,7 +15,7 @@ header{
 #catalogo_remedios,
 #lista_pedidos{
   display: grid; /*Cria um grid responsivo(acompanha o tamanho da tela*/
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
   gap: 20px;
   margin-top: 20px;
 }
@@ -481,3 +481,44 @@ header{
   background-color: #218838;
 }
 
+.busca-container {
+  /* Centraliza a barra de busca */
+  margin: 20px auto; 
+  max-width: 90%;
+  padding: 0 10px;
+}
+
+.barra-busca {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.form-grupo-quantidade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-grupo-quantidade label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.form-grupo-quantidade input[type="number"] {
+  width: 80px; /* Tamanho bom para quantidade */
+  padding: 8px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.form-grupo-quantidade p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9em;
+}
