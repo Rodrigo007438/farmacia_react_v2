@@ -48,22 +48,20 @@ function MeusPedidos() {
       <h2 id='pedidos_titulo' style={{ display: 'block', textAlign: 'center' }}>Meus Pedidos</h2>
       
       <section id='lista_pedidos' style={{ display: 'grid' }}>
-        {pedidosFiltrados.length === 0 ? (
-          <p style={{ textAlign: 'center' }}>
-            Você ainda não fez nenhum pedido.
-          </p>
-        ) : (
-          pedidosFiltrados.map((pedido) => (
-            <div key={pedido.id} className='pedido_card'>
-              <h4>Pedido de: {pedido.nome_cliente}</h4>
-              <p>Email: {pedido.email_cliente}</p>
-              <hr />
-              <p><strong>Remedio: </strong>{pedido.remedio_nome}</p>
-              <p><strong>Preço: </strong>R$ {pedido.remedio_preco}</p>
-              {/* Esta página (do cliente) não tem o botão de cancelar */}
-            </div>
-          ))
-        )}
+          {pedidosFiltrados.length === 0 ? (
+            <p style={{textAlign:'center'}}>Você não fez nenhum pedido.</p>
+          ):(
+            pedidosFiltrados.map((pedido) => (
+              <div key={pedido.id} className='pedido_card'>
+                <h4>Pedido de: {pedido.nome_cliente}</h4>
+                <p>Email: {pedido.email_cliente}</p>
+                <hr />
+                <p><strong>Remedio: </strong>{pedido.quantidade_pedida || 1} x {pedido.remedio_nome}</p>
+                <p><strong>Preço Total: </strong>R$ {pedido.remedio_preco}</p>
+                {/* Esta página (do cliente) não tem o botão de cancelar */}
+              </div>
+            ))
+          )}
       </section>
     </>
   );
