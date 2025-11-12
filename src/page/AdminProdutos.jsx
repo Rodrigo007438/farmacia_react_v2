@@ -171,7 +171,7 @@ function AdminProdutos(){
         const {name, value} = e.target;
         set_data_novo(dados_anteriores =>({
             ...dados_anteriores,
-            [name]: valor_final
+            [name]: value
         }));
     };
 
