@@ -14,7 +14,7 @@ export function AuthProvider({children}){
         if(perfil_salvo){
             set_perfil(perfil_salvo);
         }
-    }, []);
+    });
 
     const login = (perfil_user, email_user = null) =>{
         localStorage.setItem('perfil_usuario', perfil_user);
