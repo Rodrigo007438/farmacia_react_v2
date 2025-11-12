@@ -1,14 +1,23 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 body{
-  font-family: 'Roboto' ,Arial, sans-serif;
-  background-color: #f0f2f5;
+  font-family: 'Poppins' , sans-serif;
+  background-color: #f7f9fc;
   margin: 0;
   padding: 0;
+  color: #222;
 }
 
 header{
   text-align: center;
+  color: #2b2d42;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #e6f4ea;
+  color: #2b9348;
 }
 
 /*catalogo de pedidos*/
@@ -23,15 +32,16 @@ header{
 /*estilizar cartões*/
 .remedio_card,
 .pedido_card{
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background-color: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   position: relative; 
   z-index: 1;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;;
 }
 
 .remedio_card img{
@@ -43,25 +53,28 @@ header{
 
 .remedio_card h3{
   margin-top: 10px;
-  color: #333;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 
 .preco{
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #007bff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2b9348;
   margin: 10px 0;
 }
 
 .remedio_card button,
 .pedido_card button{
-  background-color: #28a745;
+  background-color: #2b9348;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  font-weight: 600;
 }
 
 .pedido_card button{
@@ -79,8 +92,8 @@ header{
 /* Efeito de "levantar" o cartão ao passar o mouse */
 .remedio_card:hover,
 .pedido_card:hover{
-  transform: translateY(-4px); 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   z-index: 10;
 }
 
@@ -90,7 +103,8 @@ header{
 }
 
 .pedido_card button:hover {
-  background-color: #5a6268;
+  background-color: #207437;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /*Estilo Formulário*/
@@ -422,11 +436,11 @@ header{
 }
 
 .remedio_card .admin-delete-btn{
-  background-color: #e74545;
+  background-color: #e63946 !important;
 }
 
 .remedio_card .admin-delete-btn:hover {
-  background-color: #c41f37;
+  background-color: #b82e3a !important;
 }
 
 .btn-confirma{
@@ -493,9 +507,11 @@ header{
   padding: 12px 15px;
   font-size: 1.1em;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d6d6d6;
+  background-color: #ffffff;;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   box-sizing: border-box; /* Garante que o padding não quebre o layout */
+  transition: all 0.3s ease;
 }
 
 .form-grupo-quantidade {
@@ -503,6 +519,12 @@ header{
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+}
+
+.barra-busca:focus {
+  border-color: #2b9348;
+  box-shadow: 0 0 0 3px rgba(43,147,72,0.2);
+  outline: none;
 }
 
 .form-grupo-quantidade label {
@@ -521,4 +543,15 @@ header{
   margin: 0;
   color: #555;
   font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+  .remedio_card {
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .preco {
+    font-size: 1rem;
+  }
 }
