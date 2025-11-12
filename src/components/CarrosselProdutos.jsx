@@ -15,7 +15,7 @@ import 'swiper/css/pagination';
 
 import { useState } from "react";
 
-const API_URL = 'https://69010550ff8d792314bc5118.mockapi.io/farmacia_api';
+const API_URL = 'http://localhost:4000/api';
 
 function CarrosselProdutos(){
     const [produtos, set_produtos] = useState([]);
