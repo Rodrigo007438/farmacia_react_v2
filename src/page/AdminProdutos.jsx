@@ -171,7 +171,7 @@ function AdminProdutos(){
         const {name, value} = e.target;
         set_data_novo(dados_anteriores =>({
             ...dados_anteriores,
-            [name]: value
+            [name]: valor_final
         }));
     };
 
@@ -227,7 +227,7 @@ function AdminProdutos(){
 
         <section id="lista_pedidos" style={{display: 'grid'}}>
 
-        {remedios.map((remedio) =>(
+        {produto_filtrado.map((remedio) =>(
             <div key={remedio.id} className="remedio_card">
 
                 <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name}/>
