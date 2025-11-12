@@ -555,3 +555,20 @@ header{
     font-size: 1rem;
   }
 }
+
+.form_checkbox{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form_checkbox label{
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.form_checkbox input[type = 'checkbox']{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
