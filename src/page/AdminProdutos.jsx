@@ -95,7 +95,8 @@ function AdminProdutos(){
     set_form_data({
         name: produto.name,
         preco: String(produto.preco).replace(',', '.'), 
-        quantidade_estoque: produto.quantidade_estoque
+        quantidade_estoque: produto.quantidade_estoque,
+        promocao: produto.promocao || false
     });
 
     set_modal_aberto(true);
@@ -110,7 +111,10 @@ function AdminProdutos(){
     }
 
     const trocando_form = (e) => {
-        const {name, value} = e.target;
+        const {name, value, type, checked} = e.target;
+
+        const valor_final = type === 'checkbox' ? checked : value;
+
         set_form_data(dados_anteriores => ({
             ...dados_anteriores,
             [name]:value
@@ -124,7 +128,8 @@ function AdminProdutos(){
         const enviando_dados = {
             name:form_data.name,
             preco: Number(String(form_data.preco).replace(',','.')),
-            quantidade_estoque: Number(form_data.quantidade_estoque)
+            quantidade_estoque: Number(form_data.quantidade_estoque),
+            promocao: form_data.promocao
         };
 
         try{
@@ -289,6 +294,11 @@ function AdminProdutos(){
                         <label htmlFor="quantidade_estoque">Estoque: </label>
                         <input type="number" id="quantidade_estoque" name="quantidade_estoque" value={form_data.quantidade_estoque} onChange={trocando_form} required />
                         
+                    </div>
+                    <div className="form_checkbox">
+                        <label htmlFor="promocao">Em promoção?</label>
+                        <input type="checkbox" ip='promoção' name="promocao" checked={form.data.promocao} onChange={trocando_form} />
+
                     </div>
 
                     <button type="submit">Salvar Alterações</button>
