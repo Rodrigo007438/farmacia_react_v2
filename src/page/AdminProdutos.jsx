@@ -117,7 +117,7 @@ function AdminProdutos(){
 
         set_form_data(dados_anteriores => ({
             ...dados_anteriores,
-            [name]:value
+            [name]:valor_final
         }));
     };
 
