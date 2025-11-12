@@ -4,7 +4,7 @@ import '../App.css';
 
 import { toast } from "react-toastify";
 
-const API_URL ='https://69010550ff8d792314bc5118.mockapi.io/farmacia_api';
+const API_URL ='http://localhost:4000/api';
 
 function AdminPedidos(){
     const [pedidos, set_pedidos] = useState([]);
