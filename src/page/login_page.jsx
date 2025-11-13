@@ -50,6 +50,10 @@ function LoginPage(){
                         <input type='password' id='password' placeholder='Digite sua senha' value={password} onChange={(e) => set_password(e.target.value)}/>
                     </div>
                     <button type='submit'>Entrar</button>
+
+                    <p style={{textAlign: 'center', marginTop: '15px'}}>
+                    Não tem conta? <Link to="/cadastro" style={{color: '#28a745', fontWeight: 'bold'}}>Cadastre-se</Link>
+                    </p>
                 </form>
             </section>
         </main>
