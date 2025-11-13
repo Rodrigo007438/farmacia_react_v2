@@ -3,7 +3,7 @@ import '../App.css';
 import { toast } from 'react-toastify';
 
 // A URL da API (necessária)
-const API_URL = 'http://localhost:4000/api';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function MeusPedidos() {
   const [pedidos, setPedidos] = useState([]);
