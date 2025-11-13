@@ -125,11 +125,50 @@ button, .home-cta-button, .header-logout-btn {
   background-color: var(--bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 20px;
+  padding: 25px; /* Mais espaço interno */
   display: flex;
   flex-direction: column;
-  border: 1px solid transparent; /* Para evitar pulos no hover */
+  gap: 10px; /* Espaço entre as linhas de texto */
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pedido_card h4 {
+  margin: 0 0 10px 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.pedido_card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  word-break: break-word;     /* Quebra palavras muito longas */
+  overflow-wrap: break-word;  /* Garante que não vaze para fora */
+}
+
+/* Deixa os rótulos em negrito e cinza */
+.pedido_card p strong {
+  display: block; /* Coloca o rótulo em uma linha separada  */
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.pedido_card button {
+  margin-top: auto; /* Empurra para o final */
+  background-color: #fee2e2;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.pedido_card button:hover {
+  background-color: var(--danger);
+  color: white;
 }
 
 .remedio_card:hover {
