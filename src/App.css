@@ -292,7 +292,7 @@ button, .home-cta-button, .header-logout-btn {
 
 /* Titulos das páginas */
 h2#pedidos_titulo {
-  text-align: center;
+  text-align:left;
   font-size: 2.2rem;
   color: var(--text-main);
   margin-bottom: 40px;
