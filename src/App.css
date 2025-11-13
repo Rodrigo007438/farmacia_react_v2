@@ -1,574 +1,302 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-body{
-  font-family: 'Poppins' , sans-serif;
-  background-color: #f7f9fc;
-  margin: 0;
-  padding: 0;
-  color: #222;
+/* --- VARIÁVEIS GLOBAIS (O TEMA DO SITE) --- */
+:root {
+  --primary: #059669;       /* Verde Esmeralda Profissional */
+  --primary-hover: #047857; /* Verde mais escuro */
+  --danger: #ef4444;        /* Vermelho moderno */
+  --danger-hover: #dc2626;
+  --edit: #3b82f6;          /* Azul moderno */
+  --edit-hover: #2563eb;
+  
+  --bg-body: #f3f4f6;       /* Cinza muito claro para o fundo */
+  --bg-card: #ffffff;       /* Branco puro para cartões */
+  
+  --text-main: #111827;     /* Quase preto (mais suave que #000) */
+  --text-secondary: #6b7280; /* Cinza para textos secundários */
+  
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 12px;           /* Bordas arredondadas modernas */
 }
 
-header{
-  text-align: center;
-  color: #2b2d42;
-  font-weight: 500;
-  transition: all 0.3s ease;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
+}
+
+/* --- HEADER --- */
+.site-header {
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 20px;
+}
+
+.container-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 70px; /* Um pouco mais alto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 20px;
+  transition: color 0.2s;
 }
 
 .nav-link:hover {
-  background-color: #e6f4ea;
-  color: #2b9348;
+  color: var(--primary);
 }
 
-/*catalogo de pedidos*/
-#catalogo_remedios,
-#lista_pedidos{
-  display: grid; /*Cria um grid responsivo(acompanha o tamanho da tela*/
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-  gap: 20px;
-  margin-top: 20px;
+.user-info-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-/*estilizar cartões*/
-.remedio_card,
-.pedido_card{
-  background-color: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+.user-name-tag {
+  background-color: #ecfdf5; /* Fundo verde bem clarinho */
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- BOTÕES GERAIS --- */
+button, .home-cta-button, .header-logout-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.header-logout-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid #e5e7eb;
+}
+
+.header-logout-btn:hover {
+  background-color: #fee2e2;
+  color: var(--danger);
+  border-color: #fee2e2;
+}
+
+/* --- GRID DE PRODUTOS --- */
+#lista_pedidos, #catalogo_remedios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* --- CARDS --- */
+.remedio_card, .pedido_card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  position: relative; 
-  z-index: 1;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;;
+  border: 1px solid transparent; /* Para evitar pulos no hover */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.remedio_card img{
+.remedio_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.remedio_card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
+  height: 180px;
+  object-fit: contain; /* Garante que o remédio não fique cortado */
+  margin-bottom: 15px;
+  padding: 10px; /* Espaço interno para a imagem respirar */
+  background: #fff;
 }
 
-.remedio_card h3{
-  margin-top: 10px;
-  color: #222;
-  font-weight: 600;
-  font-size: 1.05rem;
+.remedio_card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  color: var(--text-main);
+  line-height: 1.4;
 }
 
-.preco{
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #2b9348;
-  margin: 10px 0;
+.preco {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 5px;
 }
 
-.remedio_card button,
-.pedido_card button{
-  background-color: #2b9348;
+.remedio_card p strong {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Botão Principal (Comprar/Adicionar) */
+.remedio_card button, .admin-add-btn, #form_pedidos button[type='submit'] {
+  background-color: var(--primary);
   color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  margin-top: auto; /* Empurra para o final */
   width: 100%;
-  font-weight: 600;
 }
 
-.pedido_card button{
-  background-color: #6c757d;
-  margin-top: 10px;
+.remedio_card button:hover, .admin-add-btn:hover {
+  background-color: var(--primary-hover);
 }
 
-.remedio_card,
-.pedido_card,
-.remedio_card button,
-.pedido_card button{
-  transition: all 0.3s ease;
+/* --- ADMIN BOTÕES (Lado a lado) --- */
+.admin_botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-/* Efeito de "levantar" o cartão ao passar o mouse */
-.remedio_card:hover,
-.pedido_card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  z-index: 10;
+.admin_botoes button {
+  width: 50%;
+  padding: 8px;
+  font-size: 0.9rem;
 }
 
-/* Efeito de escurecer o botão ao passar o mouse */
-.remedio_card button:hover {
-  background-color: #218838;
+.admin-edt-btn {
+  background-color: var(--edit);
+  color: white;
+}
+.admin-edt-btn:hover { background-color: var(--edit-hover); }
+
+.admin-delete-btn {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.admin-delete-btn:hover { 
+  background-color: var(--danger); 
+  color: white;
 }
 
-.pedido_card button:hover {
-  background-color: #207437;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-/*Estilo Formulário*/
-#modal_pedidos_overlay{
+/* --- FORMULÁRIOS E MODAIS --- */
+#modal_pedidos_overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro mais suave */
+  backdrop-filter: blur(3px); /* Efeito de vidro fosco atrás */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-#form_pedidos{
-  background-color: #ffff;
+#form_pedidos, #modal_confirmar_delete {
+  background-color: var(--bg-card);
   padding: 30px;
-  border-radius: 8px;
-  width: 400px;
-}
-
-#form_pedidos div{
-  margin-bottom: 15px;
-}
-
-#form_pedidos label{
-  display: block;
-  margin-bottom: 5px;
-}
-
-#form_pedidos input[type="text"],
-#form_pedidos input[type="email"]{
+  border-radius: var(--radius);
   width: 100%;
-  padding: 8px;
+  max-width: 400px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#form_pedidos input, .barra-busca {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 1rem;
   box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
-/*Login*/
-.login_card{
-  max-width: 500px;
-  margin: 40px auto; /*centraliza*/
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#form_pedidos button[type='submit']{
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-#cancela_pedido{
-  background-color: #e74545;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-#form_pedidos button[type='submit']:hover{
-  background-color: #218838;
-}
-
-#cancela_pedido:hover{
-  background-color: #c41f37;
-}
-
-/* --- Estilos do Modal de Confirmação --- */
-#modal_confirmar_delete {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-#modal_confirmar_delete h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-#modal_confirmar_delete p {
-  color: #555;
-  font-size: 1.1em;
-  margin-bottom: 25px;
-}
-
-.botoes_confirmar {
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-}
-
-.botoes_confirmar button {
-  width: 100%; 
-  padding: 12px 15px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#botao_sim {
-  background-color: #e74545;
-  color: white;
-}
-#botao_sim:hover {
-  background-color: #c41f37;
-}
-
-#botao_nao {
-  background-color: #6c757d;
-  color: white;
-}
-#botao_nao:hover {
-  background-color: #5a6268;
-}
-
-
-
-.site-header { 
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky; 
-  top: 0;
-  z-index: 100; 
-}
-
-.container-layout {
-  max-width: 1200px; 
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-}  
-
-.header-logo:visited{
-  color: #333;
-}
-
-.user_info{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header-logout-btn{
-  background-color: #e74545;
-  color: white;
-  cursor: pointer;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.header-logout-btn:hover{
-  background-color: #c41f37;
-}
-
-.home-cta-button{
-  display: block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-  transition: background-color 0.3 ease;
-}
-
-.home-cta-button:hover{
-  background-color: #218838;
-}
-
-.header-nav{
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.nav-link{
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3 ease;
-}
-
-.nav-link:hover{
-  background-color: #f0f2f5;
-}
-
-.carrossel-container{
-  width: 100%;
-  margin-top: 40px;
-  position: relative;
-}
-
-.carrossel-container h2{
-  text-align: center;
-  font-size: 1.8em;
-  color: #333;
-}
-
-.carrossel-swiper{
-  padding: 20px 10px 40px 10px;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px 0;
-  position: relative;
-}
-
-.carrossel-swiper .swiper-button-prev {
-  left: 10px; /* Pequena margem da borda */
-}
-
-.carrossel-swiper .swiper-button-next {
-  right: 10px; /* Pequena margem da borda */
-}
-
-.carrossel-slide{
-  width: 300px;
-  height: auto;
-}
-
-.carrossel-slide .remedio_card{
-  width: 100%; 
-  max-width: 300px; 
-  min-width: 250px; 
-  margin: 0 auto; 
-}
-
-.carrossel-swiper .swiper-button-next,
-.carrossel-swiper .swiper-button-prev{
-  color: #28a745;
-  width: 40px;
-  height: 40px;
-  transform: translateY(-40px); 
-}
-
-.carrossel-swiper .swiper-pagination-bullet{
-  background-color: #28a745;
-  opacity: 0.5;
-}
-
-.carrossel-swiper .swiper-pagination-bullet-active{
-  opacity: 1;
-}
-
-.carrossel-swiper .swiper-button-next::after,
-.carrossel-swiper .swiper-button-prev::after {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.user-name-tag {
-  background-color: #378b4b;
-  color: white;
-  cursor: default;
-  padding: 7px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 0.9em;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .container-layout {
-    flex-direction: column;
-    height: auto;
-    padding: 15px 0;
-  }
-  
-  .header-nav {
-    margin-top: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .user-info-group {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
-
-.admin_botoes{
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  margin-top: auto;
-}
-
-.admin_botoes button{
-  width: 50%;
-}
-
-.remedio_card .admin-edt-btn{
-  background-color: #007bff;
-}
-
-.remedio_card .admin-edt-btn:hover{
-  background-color: #0056b3;
-}
-
-.remedio_card .admin-delete-btn{
-  background-color: #e63946 !important;
-}
-
-.remedio_card .admin-delete-btn:hover {
-  background-color: #b82e3a !important;
-}
-
-.btn-confirma{
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.btn-confirma button{
-  width: 100%;
-  padding: 12px 15px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#btn-sim{
-  background-color: #e74545;
-  color: white;
-}
-#btn-sim:hover {
-  background-color: #c41f37;
-}
-
-/* Botão Não (Cinza) */
-#btn-nao {
-  background-color: #6c757d;
-  color: white;
-}
-#btn-nao:hover {
-  background-color: #5a6268;
-}
-
-.admin-add-btn{
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-  margin-left: 10px;
-}
-
-.admin-add-btn:hover{
-  background-color: #218838;
-}
-
-.busca-container {
-  /* Centraliza a barra de busca */
-  margin: 20px auto; 
-  max-width: 90%;
-  padding: 0 10px;
-}
-
-.barra-busca {
-  width: 100%;
-  padding: 12px 15px;
-  font-size: 1.1em;
-  border-radius: 8px;
-  border: 1px solid #d6d6d6;
-  background-color: #ffffff;;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  box-sizing: border-box; /* Garante que o padding não quebre o layout */
-  transition: all 0.3s ease;
-}
-
-.form-grupo-quantidade {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.barra-busca:focus {
-  border-color: #2b9348;
-  box-shadow: 0 0 0 3px rgba(43,147,72,0.2);
+#form_pedidos input:focus, .barra-busca:focus {
   outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
 }
 
-.form-grupo-quantidade label {
-  font-weight: bold;
-  margin-right: 10px;
+/* Botão Cancelar */
+#cancela_pedido, #btn-nao {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  margin-top: 10px;
+}
+#cancela_pedido:hover, #btn-nao:hover {
+  background-color: #e5e7eb;
 }
 
-.form-grupo-quantidade input[type="number"] {
-  width: 80px; /* Tamanho bom para quantidade */
-  padding: 8px;
+/* --- LOGIN CARD --- */
+.login_card {
+  max-width: 400px;
+  margin: 60px auto;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.login_card h2 {
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+
+.login_card button {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* --- BUSCA --- */
+.busca-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Titulos das páginas */
+h2#pedidos_titulo {
   text-align: center;
-  font-size: 1em;
+  color: var(--text-main);
+  margin-top: 40px;
+  font-size: 2rem;
 }
 
-.form-grupo-quantidade p {
-  margin: 0;
-  color: #555;
-  font-size: 0.9em;
-}
-
-@media (max-width: 600px) {
-  .remedio_card {
-    border-radius: 10px;
-    padding: 15px;
-  }
-
-  .preco {
-    font-size: 1rem;
-  }
-}
-
-.form_checkbox{
+.admin-header {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.form_checkbox label{
-  margin-bottom: 0;
-  margin-right: 15px;
-}
-
-.form_checkbox input[type = 'checkbox']{
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+  padding: 0 20px;
+  margin-top: 30px;
 }
