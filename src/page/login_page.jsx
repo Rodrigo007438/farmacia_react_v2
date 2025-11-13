@@ -12,7 +12,7 @@ import '../App.css';
 
 function LoginPage(){
     const [email, set_email] = useState('');
-    const [password, set_password] = useState('');
+    const [senha, set_senha] = useState('');
 
     //Hook de navegação
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ function LoginPage(){
                     </div>
                     <div>
                         <label htmlFor='password'>Senha</label>
-                        <input type='password' id='password' placeholder='Digite sua senha' value={password} onChange={(e) => set_password(e.target.value)}/>
+                        <input type='password' id='password' placeholder='Digite sua senha' value={senha} onChange={(e) => set_senha(e.target.value)}/>
                     </div>
                     <button type='submit'>Entrar</button>
 
