@@ -10,6 +10,8 @@ import MeusPedidos from './page/MeusPedidos';
 import AdminPedidos from "./page/AdminPedidos";
 import AdminProdutos from "./page/AdminProdutos";
 
+import RegisterPage from "./page/RegisterPage";
+
 import { AuthProvider } from "./components/AuthContext";
 
 import LayoutProtegido from "./components/layout_protegido";
@@ -27,6 +29,7 @@ function App(){
           <Route path="/" element={<HomePage />} />
 
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/cadastro" element={<RegisterPage />} />
           
           <Route element={<LayoutProtegido/>}>
             <Route path='/loja' element={<LojaPage/>}/>
