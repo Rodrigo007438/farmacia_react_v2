@@ -309,8 +309,6 @@ h2#pedidos_titulo {
 }
 
 .user-info-group {
-  display: flex;
-  align-items: center;
   gap: 15px;
   margin-left: auto; 
 }
