@@ -175,7 +175,6 @@ button, .home-cta-button, .header-logout-btn {
   display: flex;
   gap: 10px;
   margin-top: 15px;
-  margin-right: 0;
 }
 
 .admin_botoes button {
@@ -300,4 +299,18 @@ h2#pedidos_titulo {
   align-items: center;
   padding: 0 20px;
   margin-top: 30px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1; 
+}
+
+.user-info-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto; 
 }
