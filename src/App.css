@@ -175,6 +175,7 @@ button, .home-cta-button, .header-logout-btn {
   display: flex;
   gap: 10px;
   margin-top: 15px;
+  margin-right: 0;
 }
 
 .admin_botoes button {
