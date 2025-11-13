@@ -70,7 +70,7 @@ function AdminProdutos(){
         if(!produto_deletar) return;
 
         try{
-            const response = await fetch(`${API_URL}/remedios/${produto_deletar.id}`, {
+            const response = await fetch(`${API_URL}/remedios/${produto_deletar._id}`, {
                 method: 'DELETE',
             });
 
@@ -133,7 +133,7 @@ function AdminProdutos(){
         };
 
         try{
-            const response = await fetch(`${API_URL}/remedios/${produto_editando.id}`,{
+            const response = await fetch(`${API_URL}/remedios/${produto_editando._id}`,{
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(enviando_dados)
@@ -228,7 +228,7 @@ function AdminProdutos(){
         <section id="lista_pedidos" style={{display: 'grid'}}>
 
         {produto_filtrado.map((remedio) =>(
-            <div key={remedio.id} className="remedio_card">
+            <div key={remedio._id} className="remedio_card">
 
                 <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name}/>
                 <h3>{remedio.name}</h3>
