@@ -37,38 +37,45 @@ body {
 }
 
 .container-layout {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  height: 70px; /* Um pouco mais alto */
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .header-logo {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary);
   text-decoration: none;
-  letter-spacing: -0.5px;
+  width: 250px; 
 }
 
 .nav-link {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 600;
-  margin-left: 20px;
-  transition: color 0.2s;
+  font-size: 1rem;
+  transition: all 0.2s;
+  position: relative;
 }
 
 .nav-link:hover {
   color: var(--primary);
 }
-
-.user-info-group {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .user-name-tag {
@@ -227,21 +234,21 @@ button, .home-cta-button, .header-logout-btn {
 }
 
 #form_pedidos input, .barra-busca {
+
   width: 100%;
-  padding: 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  padding: 15px 20px;
+  padding-left: 45px; /* Espaço para um ícone imaginário */
+  border: 2px solid #e5e7eb;
+  border-radius: 50px; /* Bem arredondada (Estilo Google) */
   font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 #form_pedidos input:focus, .barra-busca:focus {
+ border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
 }
 
 /* Botão Cancelar */
@@ -278,27 +285,33 @@ button, .home-cta-button, .header-logout-btn {
 
 /* --- BUSCA --- */
 .busca-container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 0 20px;
+  max-width: 600px; /* Largura máxima fixa */
+  margin: 40px auto 30px auto; /* Espaçamento vertical */
+  position: relative;
 }
 
 /* Titulos das páginas */
 h2#pedidos_titulo {
-  text-align: left;
+  text-align: center;
+  font-size: 2.2rem;
   color: var(--text-main);
-  margin-top: 40px;
-  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .admin-header {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 20px auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  margin-top: 30px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+
+.admin-header h2 {
+  margin-bottom: 0; /* No header do admin ele fica zerado */
 }
 
 .header-nav {
@@ -311,4 +324,17 @@ h2#pedidos_titulo {
 .user-info-group {
   gap: 15px;
   margin-left: auto; 
+}
+
+.nav-center-group {
+  flex: 1; /* Ocupa o espaço do meio */
+  display: flex;
+  justify-content: center; /* Centraliza os links */
+  gap: 30px; /* Espaço entre os links */
+}
+
+.user-right-group {
+  width: 250px; /* Mesma largura do logo para manter o centro perfeito */
+  display: flex;
+  justify-content: flex-end;
 }
