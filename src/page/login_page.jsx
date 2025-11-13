@@ -4,12 +4,14 @@ import { Navigate, useNavigate, Link } from "react-router-dom";
 
 import {toast} from 'react-toastify';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 import { useAuth } from "../components/AuthContext";
 
 import '../App.css';
 
 function LoginPage(){
-    const [username, set_username] = useState('');
+    const [email, set_email] = useState('');
     const [password, set_password] = useState('');
 
     //Hook de navegação
@@ -20,19 +22,27 @@ function LoginPage(){
     const enviar_login = (event) => {
         event.preventDefault();
 
-        if(username ==='admin' && password === 'admin123'){
-            toast.success('Login como gerente bem-sucedido');
-           
-            login('gerente');
-            
-            navigate('/'); //redireciona para a pagina principal
-        }else if(username === 'cliente' && password === 'cliente123'){
-            toast.success('Login como cliente bem-sucedido');
+        try{
+            const response = await fetch(`${API_URL}/auth/login`, {
+                mothod: 'POST',
+                headers: {'Content-Type': 'application.json'},
+                body: JSON.stringify({email, senha})
+            });
 
-            login('cliente', 'cliente.teste@email.com');
-            navigate('/');
-        }else{
-            toast.error('Usuario ou senha incorreto');
+            const data = await response.json();
+
+            if(response.ok){
+                toast.success(`Bem vindo ${data.nome}!`);
+
+                login(data.perfil, data.email);
+
+                navigate('/');
+            }else{
+                toast.error(data.message || 'Email ou senha incorretos');
+            }
+        }catch(error){
+            console.error('Erro no login:', error);
+            toast.error('Erro ao conectar com o servidor.');
         }
     };
     return(
