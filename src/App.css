@@ -236,12 +236,13 @@ button, .home-cta-button, .header-logout-btn {
 .admin-edt-btn:hover { background-color: var(--edit-hover); }
 
 .admin-delete-btn {
-  background-color: transparent;
+  margin-top: auto; 
+  background-color: #fee2e2;
   color: var(--danger);
   border: 1px solid var(--danger);
 }
 .admin-delete-btn:hover { 
-  background-color: var(--danger); 
+ background-color: var(--danger);
   color: white;
 }
 
