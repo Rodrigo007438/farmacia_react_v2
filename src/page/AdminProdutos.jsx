@@ -222,7 +222,7 @@ function AdminProdutos(){
         
         <div className="admin-header">
             <h2 id="pedidos_titulo" style={{display: 'block', textAlign: 'center'}}>Gerenciamento de Produtos</h2>
-            <button className="admin-add-btn" onClick={abrir_modal_add}>Adicionar Novo Produto</button>
+            <button className="admin-add-btn" id="adc_produto" onClick={abrir_modal_add}>Adicionar Novo Produto</button>
         </div>
 
         <section id="lista_pedidos" style={{display: 'grid'}}>
