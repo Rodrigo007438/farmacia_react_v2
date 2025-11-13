@@ -19,12 +19,12 @@ function LoginPage(){
 
     const {login} = useAuth();
 
-    const enviar_login = (event) => {
+    const enviar_login = async (event) => {
         event.preventDefault();
 
         try{
             const response = await fetch(`${API_URL}/auth/login`, {
-                mothod: 'POST',
+                method: 'POST',
                 headers: {'Content-Type': 'application.json'},
                 body: JSON.stringify({email, senha})
             });
