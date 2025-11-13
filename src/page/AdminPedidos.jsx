@@ -76,7 +76,7 @@ function AdminPedidos(){
             return; 
         }
 
-        const remedio_id = remedio_correspondente.id;
+        const remedio_id = remedio_correspondente._id;
         const estoque_atual = Number(remedio_correspondente.quantidade_estoque);
         const quantidade_extorno = Number(deleta.quantidade_pedida || 1);
         const novo_estoque = estoque_atual + quantidade_extorno;
@@ -85,7 +85,7 @@ function AdminPedidos(){
             await atualizar_estoque(remedio_id, novo_estoque);
             await fetch(`${API_URL}/pedidos/${deleta.id}`, {method:'DELETE'});
             toast.success('Pedido cancelado e estornado com sucesso!');
-            set_pedidos(pedidos_antigos => pedidos_antigos.filter(p =>p.id !== deleta.id));
+            set_pedidos(pedidos_antigos => pedidos_antigos.filter(p =>p._id !== deleta._id));
         }catch(error){
             console.error('Erro ao deletar pedido', error);
             toast.error('Pedido cancelado e estornado com sucesso');
@@ -112,7 +112,7 @@ function AdminPedidos(){
                     <p style={{textAlign: 'center'}}>Nemhum pedido encontrado </p>
                 ):(
                     pedidos.map((pedido) =>(
-                        <div key={pedido.id} className="pedido_card">
+                        <div key={pedido._id} className="pedido_card">
                             <h4>Pedido de: {pedido.nome_cliente}</h4>
                             <p>Email: {pedido.email_cliente}</p>
                             <p>Quantidade pedida: {pedido.quantidade_pedida}</p>
