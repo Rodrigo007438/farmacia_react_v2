@@ -52,8 +52,8 @@ function LoginPage(){
             <section className='login_card'>
                 <form id='form_login' onSubmit={enviar_login}>
                     <div>
-                        <label htmlFor='username'>Usuário:</label>
-                        <input type='text' id='username' placeholder='digite admin ou cliente' value={username} onChange={(e) => set_username (e.target.value)} />
+                        <label htmlFor='email'>Email:</label>
+                        <input type='text' id='email' placeholder="Digite seu email" value={email} onChange={(e) => set_email (e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor='password'>Senha</label>
