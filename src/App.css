@@ -343,7 +343,6 @@ h2#pedidos_titulo {
 .admin-header {
   max-width: 1200px;
   margin: 40px auto 20px auto;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e5e7eb;
