@@ -101,7 +101,7 @@ function LojaPage(){
    fechar_form();
 
    set_remedios(remedios_antigos => remedios_antigos.map(r =>
-   r.id === remedio_id ? {...r, quantidade_estoque: novo_estoque} : r
+   r._id === remedio_id ? {...r, quantidade_estoque: novo_estoque} : r
    ));
    }catch (error){
    console.error('Erro no post do pedido', error);
