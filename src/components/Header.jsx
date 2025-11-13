@@ -22,43 +22,44 @@ function Header(){
        return(
   
          <header className="site-header">
-           <div className="container-layout">
-              
-             
-              <Link to="/" className="header-logo">
-                Farmácia Popular
-              </Link>
+  <div className="container-layout">
+    
+   
+    <Link to="/" className="header-logo">
+      Farmácia Popular
+    </Link>
+
  
-                 <nav className="header-nav">
+    <nav className="nav-center-group">
+      {perfil && (
+        <Link to='/loja' className="nav-link">Loja</Link>
+      )}
 
-                  {perfil && (
-                   <Link to = '/loja' className="nav-link">Loja</Link>
-                  )}
+      {perfil === 'cliente' && (
+        <Link to='/meus-pedidos' className="nav-link">Meus Pedidos</Link>
+      )}
 
-                   {perfil === 'cliente' && (
-                      <Link to='/meus-pedidos' className="nav-link"> Meus Pedidos </Link>
-                   )}
-                    {perfil === 'gerente' &&(
-                      <>
-                      
-                        <Link to='/admin/pedidos' className="nav-link">Gererenciador de Pedidos</Link>
-                        <Link to='/admin/produtos' className="nav-link">Gerenciador de Produtos</Link>
-                        </>
-                    )}
+      {perfil === 'gerente' && (
+        <>
+          <Link to="/admin/pedidos" className="nav-link">Ger. Pedidos</Link>
+          <Link to="/admin/produtos" className="nav-link">Ger. Produtos</Link>
+        </>
+      )}
+    </nav>
 
-                    {perfil ? (
-                      <div className="user-info-group">
-                        <span className="user-name-tag">{perfil_nome}</span>
-                        <button onClick={handle_logout} className="header-logout-btn">Sair</button>
-                      </div>
-                    ):(
+    <div className="user-right-group">
+      {perfil ? (
+        <div className="user-info-group">
+          <span className="user-name-tag">{perfil_nome}</span>
+          <button onClick={handle_logout} className="header-logout-btn">Sair</button>
+        </div>
+      ) : (
+        <Link to='/login' className="nav-link">Entrar</Link>
+      )}
+    </div>
 
-                      <Link to='/login' className="nav-link">Entrar</Link>
-                   )}
-                   
-                  </nav>
-            </div>
-          </header>
+  </div>
+</header>
        );
 }
 
