@@ -353,6 +353,11 @@ h2#pedidos_titulo {
   margin-bottom: 0; /* No header do admin ele fica zerado */
 }
 
+#adc_produto{
+  align-items: center;
+  display: flex;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
