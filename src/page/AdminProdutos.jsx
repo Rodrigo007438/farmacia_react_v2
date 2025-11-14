@@ -297,7 +297,7 @@ function AdminProdutos(){
                     </div>
                     <div className="form_checkbox">
                         <label htmlFor="promocao">Em promoção?</label>
-                        <input type="checkbox" ip='promocao' name="promocao" checked={form_data.promocao} onChange={trocando_form} />
+                        <input type="checkbox" id='promocao' name="promocao" checked={form_data.promocao} onChange={trocando_form} />
 
                     </div>
 
