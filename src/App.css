@@ -328,6 +328,7 @@ button, .home-cta-button, .header-logout-btn {
   max-width: 600px; /* Largura máxima fixa */
   margin: 40px auto 30px auto; /* Espaçamento vertical */
   position: relative;
+  align-items: left;
 }
 
 /* Titulos das páginas */
