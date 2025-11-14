@@ -1,21 +1,20 @@
-/* --- VARIÁVEIS GLOBAIS (O TEMA DO SITE) --- */
+/* Variaveis Globais */
 :root {
-  --primary: #059669;       /* Verde Esmeralda Profissional */
-  --primary-hover: #047857; /* Verde mais escuro */
-  --danger: #ef4444;        /* Vermelho moderno */
+  --primary: #059669;       
+  --primary-hover: #047857;
+  --danger: #ef4444;       
   --danger-hover: #dc2626;
-  --edit: #3b82f6;          /* Azul moderno */
+  --edit: #3b82f6;         
   --edit-hover: #2563eb;
   
-  --bg-body: #f3f4f6;       /* Cinza muito claro para o fundo */
-  --bg-card: #ffffff;       /* Branco puro para cartões */
+  --bg-body: #f3f4f6;    
+  --bg-card: #ffffff;     
   
-  --text-main: #111827;     /* Quase preto (mais suave que #000) */
-  --text-secondary: #6b7280; /* Cinza para textos secundários */
+  --text-main: #111827;     
+  --text-secondary: #6b7280;
   
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --radius: 12px;           /* Bordas arredondadas modernas */
-}
+  --radius: 12px;          
 
 body {
   font-family: 'Inter', sans-serif;
@@ -23,10 +22,10 @@ body {
   color: var(--text-main);
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- HEADER --- */
+/*Header*/
 .site-header {
   background-color: var(--bg-card);
   box-shadow: var(--shadow);
@@ -54,6 +53,19 @@ body {
   width: 250px; 
 }
 
+.nav-center-group {
+  flex: 1;
+  display: flex;
+  justify-content: center; 
+  gap: 30px; 
+}
+
+.user-right-group {
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .nav-link {
   color: var(--text-secondary);
   text-decoration: none;
@@ -78,8 +90,14 @@ body {
   width: 100%;
 }
 
+.user-info-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .user-name-tag {
-  background-color: #ecfdf5; /* Fundo verde bem clarinho */
+  background-color: #ecfdf5;
   color: var(--primary);
   padding: 6px 12px;
   border-radius: 20px;
@@ -87,7 +105,7 @@ body {
   font-weight: 600;
 }
 
-/* --- BOTÕES GERAIS --- */
+/*Regra botões*/
 button, .home-cta-button, .header-logout-btn {
   border: none;
   border-radius: 8px;
@@ -110,7 +128,7 @@ button, .home-cta-button, .header-logout-btn {
   border-color: #fee2e2;
 }
 
-/* --- GRID DE PRODUTOS --- */
+/*Grid Produtos*/
 #lista_pedidos, #catalogo_remedios {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -120,15 +138,15 @@ button, .home-cta-button, .header-logout-btn {
   padding: 0 20px;
 }
 
-/* --- CARDS --- */
-.remedio_card, .pedido_card {
+/* Card do pedido */
+.pedido_card {
   background-color: var(--bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 25px; /* Mais espaço interno */
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espaço entre as linhas de texto */
+  gap: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -145,13 +163,12 @@ button, .home-cta-button, .header-logout-btn {
   font-size: 0.95rem;
   color: var(--text-main);
   line-height: 1.5;
-  word-break: break-word;     /* Quebra palavras muito longas */
-  overflow-wrap: break-word;  /* Garante que não vaze para fora */
+  word-break: break-word;     
+  overflow-wrap: break-word;  
 }
 
-/* Deixa os rótulos em negrito e cinza */
 .pedido_card p strong {
-  display: block; /* Coloca o rótulo em uma linha separada  */
+  display: block; 
   color: var(--text-secondary);
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -160,7 +177,7 @@ button, .home-cta-button, .header-logout-btn {
 }
 
 .pedido_card button {
-  margin-top: auto; /* Empurra para o final */
+  margin-top: auto;
   background-color: #fee2e2;
   color: var(--danger);
   border: 1px solid var(--danger);
@@ -171,6 +188,19 @@ button, .home-cta-button, .header-logout-btn {
   color: white;
 }
 
+/*Produto*/
+.remedio_card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  display: flex; 
+  flex-direction: column;
+  border: 1px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
 .remedio_card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -179,9 +209,9 @@ button, .home-cta-button, .header-logout-btn {
 .remedio_card img {
   width: 100%;
   height: 180px;
-  object-fit: contain; /* Garante que o remédio não fique cortado */
+  object-fit: contain;
   margin-bottom: 15px;
-  padding: 10px; /* Espaço interno para a imagem respirar */
+  padding: 10px;
   background: #fff;
 }
 
@@ -204,23 +234,22 @@ button, .home-cta-button, .header-logout-btn {
   font-size: 0.9rem;
 }
 
-/* Botão Principal (Comprar/Adicionar) */
-.remedio_card button, .admin-add-btn, #form_pedidos button[type='submit'] {
+/* Botão Comprar */
+.remedio_card button {
   background-color: var(--primary);
   color: white;
-  margin-top: auto; /* Empurra para o final */
+  margin-top: auto; 
   width: 100%;
 }
-
-.remedio_card button:hover, .admin-add-btn:hover {
+.remedio_card button:hover {
   background-color: var(--primary-hover);
 }
 
-/* --- ADMIN BOTÕES (Lado a lado) --- */
+/* Botões Admin*/
 .admin_botoes {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: auto; /* Alinhamento dos botões */
 }
 
 .admin_botoes button {
@@ -236,22 +265,42 @@ button, .home-cta-button, .header-logout-btn {
 .admin-edt-btn:hover { background-color: var(--edit-hover); }
 
 .admin-delete-btn {
-  margin-top: auto; 
-  background-color: #fee2e2;
+  background-color: transparent;
   color: var(--danger);
   border: 1px solid var(--danger);
 }
 .admin-delete-btn:hover { 
- background-color: var(--danger);
+  background-color: var(--danger); 
   color: white;
 }
 
-/* --- FORMULÁRIOS E MODAIS --- */
+/* Promoção */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.badge-promo { background-color: var(--danger); }
+.badge-estoque { background-color: #6b7280; }
+
+.remedio_card.sem-estoque {
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+/* Formulario e modal */
 #modal_pedidos_overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro mais suave */
-  backdrop-filter: blur(3px); /* Efeito de vidro fosco atrás */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,22 +322,35 @@ button, .home-cta-button, .header-logout-btn {
   to { transform: translateY(0); opacity: 1; }
 }
 
-#form_pedidos input, .barra-busca {
-
- 
-  padding: 15px 20px;
-  padding-left: 45px; /* Espaço para um ícone imaginário */
-  border: 2px solid #e5e7eb;
-  border-radius: 50px; /* Bem arredondada (Estilo Google) */
+#form_pedidos input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
-#form_pedidos input:focus, .barra-busca:focus {
- border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+#form_pedidos input:focus {
   outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.form-grupo-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.form-grupo-checkbox label { margin-right: 15px; }
+.form-grupo-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0; /* Reseta margens */
 }
 
 /* Botão Cancelar */
@@ -301,7 +363,7 @@ button, .home-cta-button, .header-logout-btn {
   background-color: #e5e7eb;
 }
 
-/* --- LOGIN CARD --- */
+/* Login card */
 .login_card {
   max-width: 400px;
   margin: 60px auto;
@@ -310,12 +372,7 @@ button, .home-cta-button, .header-logout-btn {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-
-.login_card h2 {
-  color: var(--primary);
-  margin-bottom: 30px;
-}
-
+.login_card h2 { color: var(--primary); margin-bottom: 30px; }
 .login_card button {
   background-color: var(--primary);
   color: white;
@@ -323,17 +380,33 @@ button, .home-cta-button, .header-logout-btn {
   margin-top: 10px;
 }
 
-/* --- BUSCA --- */
+/* Busca  */
 .busca-container {
-  max-width: 600px; /* Largura máxima fixa */
-  margin: 40px auto 30px auto; /* Espaçamento vertical */
-  position: fixed;
+  max-width: 600px;
+  margin: 40px auto 30px auto;
+  position: relative; 
 }
 
-/* Titulos das páginas */
+.barra-busca {
+  width: 100%;
+  padding: 15px 20px;
+  padding-left: 45px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-sizing: border-box; 
+}
+.barra-busca:focus {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+  outline: none;
+}
+
+/* Títulos  */
 h2#pedidos_titulo {
-  text-align:left;
-  font-size: 2.2rem;
+  text-align: center; 
   color: var(--text-main);
   margin-bottom: 40px;
   font-weight: 800;
@@ -343,42 +416,73 @@ h2#pedidos_titulo {
 .admin-header {
   max-width: 1200px;
   margin: 40px auto 20px auto;
+  display: flex; /* Adicionado para alinhar */
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 20px;
 }
+.admin-header h2 { margin-bottom: 0; }
 
-.admin-header h2 {
-  margin-bottom: 0; /* No header do admin ele fica zerado */
+.admin-add-btn {
+  background-color: var(--primary);
+  color: white;
+}
+.admin-add-btn:hover { background-color: var(--primary-hover); }
+
+/* --- ANIMAÇÕES (SUTIS) --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-#adc_produto{
+/* --- HERO BANNER (HOME) --- */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary) 0%, #065f46 100%);
+  color: white;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  display: flex;
+  gap: 50px;
 }
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex: 1; 
+.hero-content { max-width: 500px; }
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -1px;
 }
-
-.user-info-group {
-  gap: 15px;
-  margin-left: auto; 
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
-
-.nav-center-group {
-  flex: 1; /* Ocupa o espaço do meio */
-  display: flex;
-  justify-content: center; /* Centraliza os links */
-  gap: 30px; /* Espaço entre os links */
+.hero-btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--primary);
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
-
-.user-right-group {
-  width: 250px; /* Mesma largura do logo para manter o centro perfeito */
-  display: flex;
-  justify-content: flex-end;
+.hero-btn:hover { transform: translateY(-3px); }
+.hero-image img {
+  max-width: 300px;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+@media (max-width: 768px) {
+  .hero-section { flex-direction: column; text-align: center; }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-image img { max-width: 200px; }
 }
