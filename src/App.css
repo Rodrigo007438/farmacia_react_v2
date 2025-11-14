@@ -470,7 +470,7 @@ h2#pedidos_titulo {
   position: relative;
   max-width: 1200px;
   margin: 40px auto;
-  padding: 0 60px; /* Espaço reduzido para setas mais próximas */
+  padding: 0 10px; /* Espaço reduzido para setas mais próximas */
 }
 
 .carrossel-swiper {
