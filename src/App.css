@@ -15,6 +15,7 @@
   
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --radius: 12px;          
+}
 
 body {
   font-family: 'Inter', sans-serif;
@@ -25,7 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/*Header*/
+/* Header */
 .site-header {
   background-color: var(--bg-card);
   box-shadow: var(--shadow);
@@ -78,6 +79,7 @@ body {
 .nav-link:hover {
   color: var(--primary);
 }
+
 .nav-link::after {
   content: '';
   display: block;
@@ -86,6 +88,7 @@ body {
   background: var(--primary);
   transition: width 0.3s;
 }
+
 .nav-link:hover::after {
   width: 100%;
 }
@@ -105,7 +108,7 @@ body {
   font-weight: 600;
 }
 
-/*Regra botões*/
+/* Regra botões */
 button, .home-cta-button, .header-logout-btn {
   border: none;
   border-radius: 8px;
@@ -128,7 +131,7 @@ button, .home-cta-button, .header-logout-btn {
   border-color: #fee2e2;
 }
 
-/*Grid Produtos*/
+/* Grid Produtos */
 #lista_pedidos, #catalogo_remedios {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -148,6 +151,11 @@ button, .home-cta-button, .header-logout-btn {
   flex-direction: column;
   gap: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pedido_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .pedido_card h4 {
@@ -188,7 +196,7 @@ button, .home-cta-button, .header-logout-btn {
   color: white;
 }
 
-/*Produto*/
+/* Produto */
 .remedio_card {
   background-color: var(--bg-card);
   border-radius: var(--radius);
@@ -199,6 +207,7 @@ button, .home-cta-button, .header-logout-btn {
   border: 1px solid transparent;
   transition: transform 0.2s, box-shadow 0.2s;
   animation: fadeInUp 0.6s ease-out forwards;
+  position: relative;
 }
 
 .remedio_card:hover {
@@ -241,15 +250,16 @@ button, .home-cta-button, .header-logout-btn {
   margin-top: auto; 
   width: 100%;
 }
+
 .remedio_card button:hover {
   background-color: var(--primary-hover);
 }
 
-/* Botões Admin*/
+/* Botões Admin */
 .admin_botoes {
   display: flex;
   gap: 10px;
-  margin-top: auto; /* Alinhamento dos botões */
+  margin-top: auto;
 }
 
 .admin_botoes button {
@@ -262,13 +272,17 @@ button, .home-cta-button, .header-logout-btn {
   background-color: var(--edit);
   color: white;
 }
-.admin-edt-btn:hover { background-color: var(--edit-hover); }
+
+.admin-edt-btn:hover { 
+  background-color: var(--edit-hover); 
+}
 
 .admin-delete-btn {
   background-color: transparent;
   color: var(--danger);
   border: 1px solid var(--danger);
 }
+
 .admin-delete-btn:hover { 
   background-color: var(--danger); 
   color: white;
@@ -287,8 +301,14 @@ button, .home-cta-button, .header-logout-btn {
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.badge-promo { background-color: var(--danger); }
-.badge-estoque { background-color: #6b7280; }
+
+.badge-promo { 
+  background-color: var(--danger); 
+}
+
+.badge-estoque { 
+  background-color: #6b7280; 
+}
 
 .remedio_card.sem-estoque {
   opacity: 0.7;
@@ -298,7 +318,10 @@ button, .home-cta-button, .header-logout-btn {
 /* Formulario e modal */
 #modal_pedidos_overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   display: flex;
@@ -318,8 +341,14 @@ button, .home-cta-button, .header-logout-btn {
 }
 
 @keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { 
+    transform: translateY(20px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
 }
 
 #form_pedidos input {
@@ -345,12 +374,16 @@ button, .home-cta-button, .header-logout-btn {
   align-items: center;
   margin-bottom: 20px;
 }
-.form-grupo-checkbox label { margin-right: 15px; }
+
+.form-grupo-checkbox label { 
+  margin-right: 15px; 
+}
+
 .form-grupo-checkbox input[type="checkbox"] {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  margin: 0; /* Reseta margens */
+  margin: 0;
 }
 
 /* Botão Cancelar */
@@ -359,6 +392,7 @@ button, .home-cta-button, .header-logout-btn {
   color: #4b5563;
   margin-top: 10px;
 }
+
 #cancela_pedido:hover, #btn-nao:hover {
   background-color: #e5e7eb;
 }
@@ -372,7 +406,12 @@ button, .home-cta-button, .header-logout-btn {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.login_card h2 { color: var(--primary); margin-bottom: 30px; }
+
+.login_card h2 { 
+  color: var(--primary); 
+  margin-bottom: 30px; 
+}
+
 .login_card button {
   background-color: var(--primary);
   color: white;
@@ -380,7 +419,7 @@ button, .home-cta-button, .header-logout-btn {
   margin-top: 10px;
 }
 
-/* Busca  */
+/* Busca */
 .busca-container {
   max-width: 600px;
   margin: 40px auto 30px auto;
@@ -398,13 +437,14 @@ button, .home-cta-button, .header-logout-btn {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   box-sizing: border-box; 
 }
+
 .barra-busca:focus {
   border-color: var(--primary);
   box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
   outline: none;
 }
 
-/* Títulos  */
+/* Títulos */
 h2#pedidos_titulo {
   text-align: center; 
   color: var(--text-main);
@@ -422,21 +462,32 @@ h2#pedidos_titulo {
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 20px;
 }
-.admin-header h2 { margin-bottom: 0; }
+
+.admin-header h2 { 
+  margin-bottom: 0; 
+}
 
 .admin-add-btn {
   background-color: var(--primary);
   color: white;
 }
-.admin-add-btn:hover { background-color: var(--primary-hover); }
 
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.admin-add-btn:hover { 
+  background-color: var(--primary-hover); 
 }
 
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
 
+/* Hero Section */
 .hero-section {
   background: linear-gradient(135deg, var(--primary) 0%, #065f46 100%);
   color: white;
@@ -447,19 +498,25 @@ h2#pedidos_titulo {
   align-items: center;
   gap: 50px;
 }
-.hero-content { max-width: 500px; }
+
+.hero-content { 
+  max-width: 500px; 
+}
+
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   line-height: 1.1;
   letter-spacing: -1px;
 }
+
 .hero-content p {
   font-size: 1.1rem;
   opacity: 0.9;
   margin-bottom: 30px;
   line-height: 1.6;
 }
+
 .hero-btn {
   display: inline-block;
   background-color: white;
@@ -471,20 +528,59 @@ h2#pedidos_titulo {
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: transform 0.2s;
 }
-.hero-btn:hover { transform: translateY(-3px); }
+
+.hero-btn:hover { 
+  transform: translateY(-3px); 
+}
+
 .hero-image img {
   max-width: 300px;
   animation: float 6s ease-in-out infinite;
 }
+
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-@media (max-width: 768px) {
-  .hero-section { flex-direction: column; text-align: center; }
-  .hero-content h1 { font-size: 2rem; }
-  .hero-image img { max-width: 200px; }
+  0% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+  100% { 
+    transform: translateY(0px); 
+  }
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+  .hero-section { 
+    flex-direction: column; 
+    text-align: center; 
+  }
+  
+  .hero-content h1 { 
+    font-size: 2rem; 
+  }
+  
+  .hero-image img { 
+    max-width: 200px; 
+  }
+  
+  .nav-center-group {
+    gap: 15px;
+  }
+  
+  .container-layout {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
+  }
+  
+  .header-logo, .user-right-group {
+    width: auto;
+  }
+  
+  #lista_pedidos, #catalogo_remedios {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
 }
