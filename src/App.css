@@ -326,7 +326,7 @@ button, .home-cta-button, .header-logout-btn {
   width: 100%;
   padding: 12px;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 8px; 
   margin-top: 5px;
   margin-bottom: 15px;
   font-size: 1rem;
