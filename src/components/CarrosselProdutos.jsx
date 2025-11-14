@@ -46,7 +46,7 @@ function CarrosselProdutos(){
     return(
         <div className='carrossel-container'>
             <h2>Produtos em Destaque</h2>
-            <Swiper modules={[Navigation, Pagination]} navigation pagination={{clickable: true}} spaceBetween={20} slidesPerView={'auto'} className="carrossel-swiper">
+            <Swiper className='carrossel-swiper' spaceBetween={30} slidesPerView={1} loop={true} modules={[Navigation, Pagination]} navigation pagination={{clickable: true}}>
 
                 {produtos.map((produto) =>(
 
