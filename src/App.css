@@ -1,34 +1,38 @@
+/* --- 
+  TEMA DA FARMÁCIA POPULAR - VERSÃO FINAL 
+  Por: Gemini (e Rodrigo!)
+--- */
+
+/* --- VARIÁVEIS GLOBAIS (O "TEMA") --- */
 :root {
-  --primary: #059669;
-  --primary-hover: #047857;
-  --danger: #ef4444;
+  --primary: #059669;       /* Verde Esmeralda Profissional */
+  --primary-hover: #047857; /* Verde mais escuro */
+  --danger: #ef4444;        /* Vermelho moderno */
   --danger-hover: #dc2626;
-  --edit: #3b82f6;
+  --edit: #3b82f6;          /* Azul moderno */
   --edit-hover: #2563eb;
-
-  --bg-body: #f3f4f6;
-  --bg-card: #ffffff;
-
-  --text-main: #111827;
-  --text-secondary: #6b7280;
-
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-  --radius: 12px;
+  
+  --bg-body: #f3f4f6;       /* Cinza muito claro para o fundo */
+  --bg-card: #ffffff;       /* Branco puro para cartões */
+  
+  --text-main: #111827;     /* Quase preto (mais suave que #000) */
+  --text-secondary: #6b7280; /* Cinza para textos secundários */
+  
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 12px;           /* Bordas arredondadas modernas */
 }
 
-/* --------- BASE GLOBAL --------- */
+/* --- CONFIGURAÇÕES GLOBAIS --- */
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-body);
   color: var(--text-main);
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
 }
 
-/* --------- HEADER --------- */
+/* --- HEADER (Alinhamento Simétrico) --- */
 .site-header {
   background-color: var(--bg-card);
   box-shadow: var(--shadow);
@@ -48,21 +52,21 @@ body {
   padding: 0 20px;
 }
 
-/* Logo */
+/* (Esquerda) Logo */
 .header-logo {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--primary);
   text-decoration: none;
-  width: 250px;
+  width: 250px; /* Largura fixa para equilibrar */
 }
 
-/* Menu Central */
+/* (Centro) Links de Navegação */
 .nav-center-group {
-  flex: 1;
+  flex: 1; /* Ocupa o espaço do meio */
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: center; /* Centraliza os links */
+  gap: 30px; /* Espaço entre os links */
 }
 
 .nav-link {
@@ -74,11 +78,10 @@ body {
   position: relative;
   padding: 5px 0;
 }
-
 .nav-link:hover {
   color: var(--primary);
 }
-
+/* Efeito de linha verde ao passar o mouse */
 .nav-link::after {
   content: '';
   display: block;
@@ -89,16 +92,15 @@ body {
   position: absolute;
   bottom: 0;
 }
-
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* Usuario lado direito */
+/* (Direita) Grupo do Usuário */
 .user-right-group {
-  width: 250px;
+  width: 250px; /* Mesma largura do logo para manter o centro perfeito */
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Alinha no canto direito */
 }
 
 .user-info-group {
@@ -108,7 +110,7 @@ body {
 }
 
 .user-name-tag {
-  background-color: #ecfdf5;
+  background-color: #ecfdf5; /* Fundo verde bem clarinho */
   color: var(--primary);
   padding: 6px 12px;
   border-radius: 20px;
@@ -116,10 +118,8 @@ body {
   font-weight: 600;
 }
 
-/* --------- BOTOES --------- */
-button,
-.home-cta-button,
-.header-logout-btn {
+/* --- BOTÕES GERAIS --- */
+button, .home-cta-button, .header-logout-btn {
   border: none;
   border-radius: 8px;
   padding: 10px 16px;
@@ -134,14 +134,13 @@ button,
   color: var(--text-secondary);
   border: 1px solid #e5e7eb;
 }
-
 .header-logout-btn:hover {
   background-color: #fee2e2;
   color: var(--danger);
   border-color: #fee2e2;
 }
 
-/* --------- HERO HOME --------- */
+/* --- BANNER DA HOME (HERO) --- */
 .hero-section {
   background: linear-gradient(135deg, var(--primary) 0%, #065f46 100%);
   color: white;
@@ -152,59 +151,85 @@ button,
   align-items: center;
   gap: 50px;
 }
-
 .hero-content { max-width: 500px; }
-
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  line-height: 1.1;
-  letter-spacing: -1px;
+  font-size: 3rem; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px;
 }
-
 .hero-content p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 30px;
-  line-height: 1.6;
+  font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; line-height: 1.6;
 }
-
 .hero-btn {
-  display: inline-block;
-  background-color: white;
-  color: var(--primary);
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: inline-block; background-color: white; color: var(--primary);
+  padding: 15px 30px; border-radius: 50px; font-weight: 700;
+  text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: transform 0.2s;
 }
-
 .hero-btn:hover { transform: translateY(-3px); }
-
 .hero-image img {
   max-width: 300px;
-  animation: flutuar 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
-
-@keyframes flutuar {
+@keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0px); }
 }
-
-/* Responsivo Hero */
 @media (max-width: 768px) {
   .hero-section { flex-direction: column; text-align: center; }
   .hero-content h1 { font-size: 2rem; }
   .hero-image img { max-width: 200px; }
 }
 
-/* --------- LISTAS E GRIDS --------- */
-#lista_pedidos,
-#catalogo_remedios {
+/* --- LAYOUT DE PÁGINAS (Títulos e Busca) --- */
+h2#pedidos_titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 40px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.admin-header {
+  max-width: 1200px;
+  margin: 40px auto 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+.admin-header h2 { margin-bottom: 0; }
+.admin-add-btn { background-color: var(--primary); color: white; }
+.admin-add-btn:hover { background-color: var(--primary-hover); }
+
+/* BARRA DE BUSCA (Estilo Padrão) */
+.busca-container {
+  max-width: 600px;
+  margin: 40px auto 30px auto;
+  position: relative;
+}
+.barra-busca {
+  width: 100%;
+  padding: 15px 20px;
+  padding-left: 45px; /* Espaço para um ícone */
+  border: 2px solid #e5e7eb;
+  border-radius: 50px; /* Pílula */
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+.barra-busca:focus {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+  outline: none;
+}
+
+/* --- GRID DE PRODUTOS --- */
+#lista_pedidos, #catalogo_remedios {
   display: grid;
+  /* Corrigido para 'auto-fill' para não esticar 1 item */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   max-width: 1200px;
@@ -212,7 +237,7 @@ button,
   padding: 0 20px;
 }
 
-/* --------- CARD DE PEDIDO --------- */
+/* --- CARD DE PEDIDO (Consertado) --- */
 .pedido_card {
   background-color: var(--bg-card);
   border-radius: var(--radius);
@@ -222,36 +247,33 @@ button,
   flex-direction: column;
   gap: 10px;
 }
-
 .pedido_card h4 {
-  margin: 0 0 10px 0;
-  color: var(--primary);
-  font-size: 1.2rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  margin: 0 0 10px 0; color: var(--primary); font-size: 1.2rem;
+  border-bottom: 1px solid #eee; padding-bottom: 10px;
 }
-
 .pedido_card p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-main);
+  margin: 0; font-size: 0.95rem; color: var(--text-main);
   line-height: 1.5;
-  word-break: break-word;
+  word-break: break-word;     /* Quebra emails longos */
+  overflow-wrap: break-word;  /* Garante que não vaze */
 }
-
+.pedido_card p strong {
+  display: block; /* Rótulo em linha separada */
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
 .pedido_card button {
-  margin-top: auto;
-  background-color: #fee2e2;
-  color: var(--danger);
-  border: 1px solid var(--danger);
+  margin-top: auto; background-color: #fee2e2;
+  color: var(--danger); border: 1px solid var(--danger);
 }
-
 .pedido_card button:hover {
-  background-color: var(--danger);
-  color: white;
+  background-color: var(--danger); color: white;
 }
 
-/* --------- CARD DE REMEDIO --------- */
+/* --- CARD DE PRODUTO (Consertado) --- */
 .remedio_card {
   background-color: var(--bg-card);
   border-radius: var(--radius);
@@ -259,66 +281,308 @@ button,
   padding: 20px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: relative; /* Para as etiquetas funcionarem */
   transition: transform 0.2s, box-shadow 0.2s;
   animation: fadeInUp 0.5s ease-out forwards;
 }
-
 .remedio_card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-
 .remedio_card img {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  margin-bottom: 15px;
-  padding: 10px;
-  background: #fff;
+  width: 100%; height: 180px; object-fit: contain;
+  margin-bottom: 15px; padding: 10px; background: #fff;
 }
-
+.remedio_card h3 {
+  font-size: 1.1rem; margin: 0 0 10px 0;
+  color: var(--text-main); line-height: 1.4;
+}
 .preco {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 5px;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--primary); margin-bottom: 5px;
+}
+.remedio_card p strong {
+  color: var(--text-secondary); font-size: 0.9rem;
 }
 
-/* Badges */
+/* Etiquetas de Promoção/Estoque */
 .card-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
-  z-index: 10;
+  position: absolute; top: 10px; right: 10px;
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: bold;
+  color: white; z-index: 10;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
 .badge-promo { background-color: var(--danger); }
 .badge-estoque { background-color: #6b7280; }
+.remedio_card.sem-estoque { opacity: 0.7; filter: grayscale(100%); }
 
-.remedio_card.sem-estoque {
-  opacity: 0.7;
-  filter: grayscale(100%);
-}
-
+/* Botão de Comprar (na Loja) */
 .remedio_card button {
   background-color: var(--primary);
   color: white;
-  margin-top: auto;
+  margin-top: auto; /* Empurra para o final */
+  width: 100%;
+}
+.remedio_card button:hover { background-color: var(--primary-hover); }
+
+/* Botões do Admin (Editar/Excluir) */
+.admin_botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Alinha no final do card */
+}
+.admin_botoes button { width: 50%; padding: 8px; font-size: 0.9rem; }
+.admin-edt-btn { background-color: var(--edit); color: white; }
+.admin-edt-btn:hover { background-color: var(--edit-hover); }
+.admin-delete-btn {
+  background-color: transparent; color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.admin-delete-btn:hover { background-color: var(--danger); color: white; }
+
+
+/* --- LOGIN CARD --- */
+.login_card {
+  max-width: 400px;
+  margin: 60px auto;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.login_card h2 { color: var(--primary); margin-bottom: 30px; }
+.login_card button {
+  background-color: var(--primary); color: white;
+  width: 100%; margin-top: 10px;
 }
 
-.remedio_card button:hover {
-  background-color: var(--primary-hover);
+/* --- MODAIS E FORMULÁRIOS (Consertado) --- */
+#modal_pedidos_overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
 }
 
-/* --------- ANIMACOES --------- */
+#form_pedidos, #modal_confirmar_delete {
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+}
+
+/* Animação de entrada do Modal */
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+/* Animação de entrada dos Cards */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Inputs de Formulário (Quadrados, não pílulas) */
+#form_pedidos input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px; /* Borda normal */
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+#form_pedidos input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+/* Checkbox de Promoção */
+.form-grupo-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.form-grupo-checkbox label { margin-right: 15px; }
+.form-grupo-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Input de Quantidade (Loja) */
+.form-grupo-quantidade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.form-grupo-quantidade label { font-weight: bold; margin-right: 10px; }
+.form-grupo-quantidade input[type="number"] {
+  width: 80px;
+  text-align: center;
+  font-size: 1em;
+}
+.form-grupo-quantidade p { margin: 0; color: #555; font-size: 0.9em; }
+
+/* Botões de Ação do Modal */
+#form_pedidos button[type='submit'], #btn-sim {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+#btn-sim { background-color: var(--danger); }
+#form_pedidos button[type='submit']:hover { background-color: var(--primary-hover); }
+#btn-sim:hover { background-color: var(--danger-hover); }
+
+/* Botões de Cancelar do Modal */
+#cancela_pedido, #btn-nao {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  margin-top: 10px;
+  width: 100%;
+}
+#cancela_pedido:hover, #btn-nao:hover {
+  background-color: #e5e7eb;
+}
+
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* --- CARROSSEL COM CARDS MENORES E SETAS COLADAS --- */
+.carrossel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px; /* Espaço para as setas */
+}
+
+.carrossel-swiper {
+  padding-bottom: 50px !important;
+}
+
+/* CARDS MENORES NO CARROSSEL */
+.carrossel-swiper .swiper-slide {
+  width: auto !important; /* Permite que o slide tenha largura automática */
+  display: flex;
+  justify-content: center;
+}
+
+.carrossel-swiper .remedio_card {
+  width: 280px; /* Largura fixa reduzida */
+  padding: 15px;
+  transform: scale(0.95);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrossel-swiper .remedio_card:hover {
+  transform: scale(0.98) translateY(-5px);
+}
+
+.carrossel-swiper .remedio_card img {
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+.carrossel-swiper .remedio_card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.carrossel-swiper .preco {
+  font-size: 1.3rem;
+}
+
+/* SETAS COLADAS AOS CARDS */
+.carrossel-swiper .swiper-button-next,
+.carrossel-swiper .swiper-button-prev {
+  background: var(--bg-card);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  border: 2px solid #f3f4f6;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+  z-index: 20;
+}
+
+.carrossel-swiper .swiper-button-next {
+  right: 10px; /* Cola mais próximo dos cards */
+}
+
+.carrossel-swiper .swiper-button-prev {
+  left: 30px; /* Cola mais próximo dos cards */
+}
+
+.carrossel-swiper .swiper-button-next::after,
+.carrossel-swiper .swiper-button-prev::after {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Efeito hover nas setas */
+.carrossel-swiper .swiper-button-next:hover,
+.carrossel-swiper .swiper-button-prev:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.carrossel-swiper .swiper-button-next:hover::after,
+.carrossel-swiper .swiper-button-prev:hover::after {
+  color: white;
+}
+
+/* Paginação */
+.carrossel-swiper .swiper-pagination-bullet-active {
+  background-color: var(--primary);
+}
+
+/* AJUSTES RESPONSIVOS */
+@media (max-width: 768px) {
+  .carrossel-container {
+    padding: 0 40px;
+  }
+  
+  .carrossel-swiper .swiper-button-next,
+  .carrossel-swiper .swiper-button-prev {
+    display: none;
+  }
+  
+  .carrossel-swiper {
+    padding: 0 10px 50px !important;
+  }
+  
+  .carrossel-swiper .remedio_card {
+    width: 250px;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .carrossel-container {
+    padding: 0 20px;
+  }
+  
+  .carrossel-swiper .remedio_card {
+    width: 220px;
+    transform: scale(0.85);
+  }
 }
