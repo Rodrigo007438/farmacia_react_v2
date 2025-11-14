@@ -485,10 +485,10 @@ h2#pedidos_titulo {
 
 /* SETAS MAIS PRÓXIMAS - COLADAS NOS CARDS */
 .carrossel-swiper .swiper-button-next { 
-  right: 0; /* Colada no lado direito */
+  right: 10; /* Colada no lado direito */
 }
 .carrossel-swiper .swiper-button-prev { 
-  left: 0; /* Colada no lado esquerdo */
+  left: 10; /* Colada no lado esquerdo */
 }
 
 /* Ícones das setas */
@@ -507,7 +507,7 @@ h2#pedidos_titulo {
 
 .carrossel-swiper .swiper-button-next:hover::after,
 .carrossel-swiper .swiper-button-prev:hover::after {
-  color: white;
+  color: none;
 }
 
 /* Paginação */
