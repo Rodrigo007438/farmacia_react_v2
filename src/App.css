@@ -475,3 +475,10 @@ h2#pedidos_titulo {
 .carrossel-swiper .swiper-pagination-bullet-active {
   background-color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
