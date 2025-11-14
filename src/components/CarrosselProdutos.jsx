@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 
 
@@ -52,7 +52,7 @@ function CarrosselProdutos(){
 
                 {produtos.map((produto) =>(
 
-                <SwiperSlide key={produto.id} className="carrossel-slide">
+                <SwiperSlide key={produto._id} className="carrossel-slide">
                     <div className="remedio_card">
                         <img src={produto.imagem_url || produto.avatar} alt={produto.name} />
                         <h3>{produto.name}</h3>
