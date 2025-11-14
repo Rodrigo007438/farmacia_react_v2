@@ -433,7 +433,7 @@ h2#pedidos_titulo {
   position: relative;
   max-width: 1200px;
   margin: 40px auto;
-  padding: 0 60px; /* Espaço para as setas */
+  padding: 0 80px; /* Mais espaço para setas coladas */
 }
 .carrossel-container h2 {
   text-align: center;
@@ -445,30 +445,28 @@ h2#pedidos_titulo {
 }
 .carrossel-swiper {
   padding-bottom: 50px !important;
+  overflow: visible !important; /* Importante para setas não cortarem */
 }
-
 /* Faz o slide único não esticar demais */
 .carrossel-swiper .swiper-slide {
-  width: auto !important;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100% !important; /* Força largura total do container */
 }
-.carrossel-swiper .remedio_card {
-  width: 100%;      /* Ocupa o espaço do slide */
-  max-width: 350px; /* Mas não passa de 350px */
-  margin: 0 auto;
+
+.carrossel-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important; /* Força largura total do container */
 }
-/* Remove o zoom-out desnecessário */
+
 .carrossel-swiper .remedio_card:hover {
-  transform: translateY(-5px); /* Mantém o hover normal */
+  transform: scale(0.98) translateY(-5px);
 }
-/* Garante que o card dentro do carrossel use os tamanhos normais */
-.carrossel-swiper .remedio_card img { height: 180px; margin-bottom: 15px; }
-.carrossel-swiper .remedio_card h3 { font-size: 1.1rem; margin-bottom: 10px; }
-.carrossel-swiper .preco { font-size: 1.5rem; }
 
-
-/* Setas do Carrossel (Estilo "Netflix") */
+/* Setas do Carrossel COLADAS */
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
@@ -479,87 +477,66 @@ h2#pedidos_titulo {
   border: 2px solid #f3f4f6;
   top: 50%;
   transform: translateY(-50%);
-  margin-top: -25px; /* Ajuste fino */
+  margin-top: 0;
   z-index: 20;
 }
-.carrossel-swiper .swiper-button-next { right: 10px; }
-.carrossel-swiper .swiper-button-prev { left: 10px; }
 
-/* ÍCONE da seta (que faltava) */
+/* SETAS MAIS PRÓXIMAS - COLADAS NOS CARDS */
+.carrossel-swiper .swiper-button-next { 
+  right: 0; /* Colada no lado direito */
+}
+.carrossel-swiper .swiper-button-prev { 
+  left: 0; /* Colada no lado esquerdo */
+}
+
+/* Ícones das setas */
 .carrossel-swiper .swiper-button-next::after,
 .carrossel-swiper .swiper-button-prev::after {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary);
 }
+
 .carrossel-swiper .swiper-button-next:hover,
 .carrossel-swiper .swiper-button-prev:hover {
   background: var(--primary);
   border-color: var(--primary);
 }
-/* Ícone fica branco no hover */
+
 .carrossel-swiper .swiper-button-next:hover::after,
 .carrossel-swiper .swiper-button-prev:hover::after {
   color: white;
 }
 
-/* Paginação (Bolinhas) */
+/* Paginação */
 .carrossel-swiper .swiper-pagination-bullet-active {
   background-color: var(--primary);
 }
 
-
-/* --- ANIMAÇÕES GERAIS --- */
-@keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* --- RESPONSIVIDADE CARROSSEL --- */
 @media (max-width: 768px) {
-  /* Header */
-  .container-layout { flex-direction: column; height: auto; padding: 15px 0; }
-  .header-logo { width: 100%; text-align: center; }
-  .nav-center-group { 
-    margin-top: 15px; 
-    flex-wrap: wrap; /* Quebra a linha se não couber */
-    justify-content: center;
-    gap: 10px;
-  }
-  .user-right-group { 
-    width: 100%; 
-    justify-content: center; 
-    margin-top: 15px; 
-  }
-  
-  /* Hero */
-  .hero-section { flex-direction: column; text-align: center; }
-  .hero-content h1 { font-size: 2rem; }
-  .hero-image img { max-width: 200px; }
-  
-  /* Admin Header */
-  .admin-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Carrossel */
   .carrossel-container {
-    padding: 0 10px;
-  align-items: center;
+    padding: 0 40px;
   }
+  
   .carrossel-swiper .swiper-button-next,
   .carrossel-swiper .swiper-button-prev {
-    display: none; /* Esconde setas no mobile */
-    -ms-flex-item-align: center;
+    display: none;
+  }
+  
+  .carrossel-swiper .remedio_card {
+    width: 280px !important;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .carrossel-container {
+    padding: 0 20px;
+  }
+  
+  .carrossel-swiper .remedio_card {
+    width: 250px !important;
+    transform: scale(0.85);
   }
 }
