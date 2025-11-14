@@ -466,35 +466,66 @@ h2#pedidos_titulo {
   transform: scale(0.98) translateY(-5px);
 }
 
-/* Setas do Carrossel COLADAS */
+.carrossel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 60px; /* Espaço reduzido para setas mais próximas */
+}
+
+.carrossel-swiper {
+  padding-bottom: 50px !important;
+  overflow: visible !important;
+}
+
+/* CONFIGURAÇÃO DO SLIDE ÚNICO */
+.carrossel-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+}
+
+.carrossel-swiper .remedio_card {
+  width: 300px !important; /* Largura fixa */
+  margin: 0 auto;
+  transform: scale(0.95);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrossel-swiper .remedio_card:hover {
+  transform: scale(0.98) translateY(-5px);
+}
+
+/* SETAS CORRETAMENTE COLADAS */
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
-  width: 40px;
-  height: 40px;
-  left: 20px;
-  right: 20px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   box-shadow: var(--shadow);
-  border: none;
+  border: 2px solid #f3f4f6;
   top: 50%;
   transform: translateY(-50%);
   margin-top: 0;
   z-index: 20;
+  transition: all 0.3s ease;
 }
 
-/* SETAS MAIS PRÓXIMAS - COLADAS NOS CARDS */
+/* SETAS COLADAS NOS CARDS - POSIÇÃO CORRETA */
 .carrossel-swiper .swiper-button-next { 
-  right: -80; /* Colada no lado direito */
+  right: 5px !important; /* Colada no container */
 }
+
 .carrossel-swiper .swiper-button-prev { 
-  left: -80; /* Colada no lado esquerdo */
+  left: 5px !important; /* Colada no container */
 }
 
 /* Ícones das setas */
 .carrossel-swiper .swiper-button-next::after,
 .carrossel-swiper .swiper-button-prev::after {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: var(--primary);
 }
@@ -507,7 +538,7 @@ h2#pedidos_titulo {
 
 .carrossel-swiper .swiper-button-next:hover::after,
 .carrossel-swiper .swiper-button-prev:hover::after {
-  color: none;
+  color: white; /* CORRIGIDO: era "none" */
 }
 
 /* Paginação */
@@ -515,10 +546,10 @@ h2#pedidos_titulo {
   background-color: var(--primary);
 }
 
-/* --- RESPONSIVIDADE CARROSSEL --- */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
   .carrossel-container {
-    padding: 0 40px;
+    padding: 0 20px;
   }
   
   .carrossel-swiper .swiper-button-next,
@@ -529,16 +560,5 @@ h2#pedidos_titulo {
   .carrossel-swiper .remedio_card {
     width: 280px !important;
     transform: scale(0.9);
-  }
-}
-
-@media (max-width: 480px) {
-  .carrossel-container {
-    padding: 0 20px;
-  }
-  
-  .carrossel-swiper .remedio_card {
-    width: 250px !important;
-    transform: scale(0.85);
   }
 }
