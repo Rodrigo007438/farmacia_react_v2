@@ -470,8 +470,10 @@ h2#pedidos_titulo {
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
-  width: 10px;
-  height: 10px;
+  width: 40px;
+  height: 40px;
+  left: 20px;
+  right: 20px;
   border-radius: 50%;
   box-shadow: var(--shadow);
   border: none;
