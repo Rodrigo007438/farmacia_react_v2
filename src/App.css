@@ -416,7 +416,7 @@ h2#pedidos_titulo {
 .admin-header {
   max-width: 1200px;
   margin: 40px auto 20px auto;
-  display: flex; /* Adicionado para alinhar */
+  display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e5e7eb;
@@ -430,13 +430,13 @@ h2#pedidos_titulo {
 }
 .admin-add-btn:hover { background-color: var(--primary-hover); }
 
-/* --- ANIMAÇÕES (SUTIS) --- */
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- HERO BANNER (HOME) --- */
+
 .hero-section {
   background: linear-gradient(135deg, var(--primary) 0%, #065f46 100%);
   color: white;
