@@ -555,9 +555,11 @@ h2#pedidos_titulo {
   /* Carrossel */
   .carrossel-container {
     padding: 0 10px;
+  align-items: center;
   }
   .carrossel-swiper .swiper-button-next,
   .carrossel-swiper .swiper-button-prev {
     display: none; /* Esconde setas no mobile */
+    -ms-flex-item-align: center;
   }
 }
