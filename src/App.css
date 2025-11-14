@@ -455,6 +455,26 @@ h2#pedidos_titulo {
   background-color: #e5e7eb;
 }
 
+/* --- Carrossel (Estilo básico) --- */
+.carrossel-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.carrossel-swiper {
+  padding-bottom: 50px !important; /* Força espaço para a paginação */
+}
+.carrossel-swiper .swiper-button-next,
+.carrossel-swiper .swiper-button-prev {
+  color: var(--primary);
+  font-weight: bold;
+}
+.carrossel-swiper .swiper-pagination-bullet-active {
+  background-color: var(--primary);
+}
 
 @media (max-width: 768px) {
   .admin-header {
