@@ -131,8 +131,8 @@ function AdminPedidos(){
                     <h3>Confirmar Cancelamento</h3>
                     <p>Tem certeza que deseja cancelar este pedido? O item voltará ao estoque.</p>
                     <div className='botoes_confirmar'>
-                    <button id='botao_sim' onClick={executa_delete}>Sim</button>
-                    <button id='botao_nao' onClick={cancela}>Não</button>
+                    <button id='btn-sim' onClick={executa_delete}>Sim</button>
+                    <button id='btn-nao' onClick={cancela}>Não</button>
                 </div>
                 </div>
                 </div>
