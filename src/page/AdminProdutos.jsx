@@ -80,7 +80,7 @@ function AdminProdutos(){
 
             toast.success('Produto excluido com sucesso!');
 
-            set_remedios(remedios_antigos => remedios_antigos.filter(r => r.id !== produto_deletar.id)
+            set_remedios(remedios_antigos => remedios_antigos.filter(r => r._id !== produto_deletar._id)
             );
         }catch(error){
             console.log('Erro ao excluir produto', error);
@@ -146,7 +146,7 @@ function AdminProdutos(){
 
             set_remedios(remedios_antigos =>
                 remedios_antigos.map(r =>
-                    r.id === produto_editando.id ? produto_atualizado : r
+                    r._id === produto_editando._id ? produto_atualizado : r
                 )           
              );
 
