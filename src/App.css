@@ -484,78 +484,125 @@ h2#pedidos_titulo {
 }
 
 
+/* --- CARROSSEL COM CARDS MENORES E SETAS COLADAS --- */
+.carrossel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px; /* Espaço para as setas */
+}
+
+.carrossel-swiper {
+  padding-bottom: 50px !important;
+}
+
+/* CARDS MENORES NO CARROSSEL */
+.carrossel-swiper .swiper-slide {
+  width: auto !important; /* Permite que o slide tenha largura automática */
+  display: flex;
+  justify-content: center;
+}
+
 .carrossel-swiper .remedio_card {
-  max-width: 280px; /* Largura máxima reduzida */
-  margin: 0 auto; /* Centraliza o card */
-  padding: 15px; /* Padding reduzido */
-  transform: scale(0.95); /* Leve redução de escala */
+  width: 280px; /* Largura fixa reduzida */
+  padding: 15px;
+  transform: scale(0.95);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carrossel-swiper .remedio_card:hover {
-  transform: scale(0.98) translateY(-5px); /* Ajusta o hover para a escala menor */
+  transform: scale(0.98) translateY(-5px);
 }
 
 .carrossel-swiper .remedio_card img {
-  height: 140px; /* Altura da imagem reduzida */
+  height: 140px;
   margin-bottom: 10px;
 }
 
 .carrossel-swiper .remedio_card h3 {
-  font-size: 1rem; /* Fonte do título reduzida */
+  font-size: 1rem;
   margin-bottom: 8px;
 }
 
 .carrossel-swiper .preco {
-  font-size: 1.3rem; /* Fonte do preço reduzida */
+  font-size: 1.3rem;
 }
 
-/* --- SETAS DO CARROSSEL COLADAS --- */
+/* SETAS COLADAS AOS CARDS */
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   box-shadow: var(--shadow);
+  border: 2px solid #f3f4f6;
   top: 50%;
   transform: translateY(-50%);
   margin-top: 0;
+  z-index: 20;
 }
 
 .carrossel-swiper .swiper-button-next {
-  right: -20px; /* Cola a seta direita no card */
+  right: 10px; /* Cola mais próximo dos cards */
 }
 
 .carrossel-swiper .swiper-button-prev {
-  left: -20px; /* Cola a seta esquerda no card */
+  left: 10px; /* Cola mais próximo dos cards */
 }
 
 .carrossel-swiper .swiper-button-next::after,
 .carrossel-swiper .swiper-button-prev::after {
-  font-size: 1rem; /* Tamanho das setas reduzido */
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary);
 }
 
-/* Ajusta o container do carrossel para não cortar as setas */
-.carrossel-swiper {
-  padding: 0 40px 50px !important; /* Adiciona padding lateral para as setas */
+/* Efeito hover nas setas */
+.carrossel-swiper .swiper-button-next:hover,
+.carrossel-swiper .swiper-button-prev:hover {
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
-/* Ajustes responsivos para mobile */
+.carrossel-swiper .swiper-button-next:hover::after,
+.carrossel-swiper .swiper-button-prev:hover::after {
+  color: white;
+}
+
+/* Paginação */
+.carrossel-swiper .swiper-pagination-bullet-active {
+  background-color: var(--primary);
+}
+
+/* AJUSTES RESPONSIVOS */
 @media (max-width: 768px) {
+  .carrossel-container {
+    padding: 0 40px;
+  }
+  
   .carrossel-swiper .swiper-button-next,
   .carrossel-swiper .swiper-button-prev {
-    display: none; /* Esconde setas em mobile */
+    display: none;
   }
   
   .carrossel-swiper {
-    padding: 0 20px 50px !important; /* Reduz padding em mobile */
+    padding: 0 10px 50px !important;
   }
   
   .carrossel-swiper .remedio_card {
-    max-width: 250px;
+    width: 250px;
     transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .carrossel-container {
+    padding: 0 20px;
+  }
+  
+  .carrossel-swiper .remedio_card {
+    width: 220px;
+    transform: scale(0.85);
   }
 }
