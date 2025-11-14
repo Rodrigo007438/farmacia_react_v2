@@ -548,7 +548,7 @@ h2#pedidos_titulo {
 }
 
 .carrossel-swiper .swiper-button-prev {
-  left: 10px; /* Cola mais próximo dos cards */
+  left: 30px; /* Cola mais próximo dos cards */
 }
 
 .carrossel-swiper .swiper-button-next::after,
