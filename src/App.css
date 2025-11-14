@@ -169,16 +169,6 @@ button, .home-cta-button, .header-logout-btn {
   max-width: 300px;
   animation: float 6s ease-in-out infinite;
 }
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-@media (max-width: 768px) {
-  .hero-section { flex-direction: column; text-align: center; }
-  .hero-content h1 { font-size: 2rem; }
-  .hero-image img { max-width: 200px; }
-}
 
 /* --- LAYOUT DE PÁGINAS (Títulos e Busca) --- */
 h2#pedidos_titulo {
@@ -207,7 +197,7 @@ h2#pedidos_titulo {
 .busca-container {
   max-width: 600px;
   margin: 40px auto 30px auto;
-  position: relative;
+  position: relative; /* Corrigido de 'fixed' */
 }
 .barra-busca {
   width: 100%;
@@ -376,17 +366,6 @@ h2#pedidos_titulo {
   animation: slideIn 0.3s ease;
 }
 
-/* Animação de entrada do Modal */
-@keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-/* Animação de entrada dos Cards */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* Inputs de Formulário (Quadrados, não pílulas) */
 #form_pedidos input {
   width: 100%;
@@ -455,60 +434,45 @@ h2#pedidos_titulo {
   background-color: #e5e7eb;
 }
 
-
-@media (max-width: 768px) {
-  .admin-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-
-
-/* --- CARROSSEL COM CARDS MENORES E SETAS COLADAS --- */
+/* --- CARROSSEL DE PRODUTOS (Com Setas e Cards Menores) --- */
 .carrossel-container {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 60px; /* Espaço para as setas */
 }
-
+.carrossel-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
 .carrossel-swiper {
   padding-bottom: 50px !important;
 }
 
-/* CARDS MENORES NO CARROSSEL */
+/* Cards Menores no Carrossel */
 .carrossel-swiper .swiper-slide {
-  width: auto !important; /* Permite que o slide tenha largura automática */
+  width: auto !important;
   display: flex;
   justify-content: center;
 }
-
 .carrossel-swiper .remedio_card {
-  width: 280px; /* Largura fixa reduzida */
+  width: 280px;
   padding: 15px;
   transform: scale(0.95);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .carrossel-swiper .remedio_card:hover {
   transform: scale(0.98) translateY(-5px);
 }
+.carrossel-swiper .remedio_card img { height: 140px; margin-bottom: 10px; }
+.carrossel-swiper .remedio_card h3 { font-size: 1rem; margin-bottom: 8px; }
+.carrossel-swiper .preco { font-size: 1.3rem; }
 
-.carrossel-swiper .remedio_card img {
-  height: 140px;
-  margin-bottom: 10px;
-}
-
-.carrossel-swiper .remedio_card h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.carrossel-swiper .preco {
-  font-size: 1.3rem;
-}
-
-/* SETAS COLADAS AOS CARDS */
+/* Setas do Carrossel (Estilo "Netflix") */
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
@@ -522,67 +486,74 @@ h2#pedidos_titulo {
   margin-top: 0;
   z-index: 20;
 }
-
-.carrossel-swiper .swiper-button-next {
-  right: 10px; /* Cola mais próximo dos cards */
-}
-
-.carrossel-swiper .swiper-button-prev {
-  left: 30px; /* Cola mais próximo dos cards */
-}
-
+.carrossel-swiper .swiper-button-next { right: 10px; }
+.carrossel-swiper .swiper-button-prev { left: 10px; }
 .carrossel-swiper .swiper-button-next::after,
 .carrossel-swiper .swiper-button-prev::after {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary);
 }
-
-/* Efeito hover nas setas */
 .carrossel-swiper .swiper-button-next:hover,
 .carrossel-swiper .swiper-button-prev:hover {
   background: var(--primary);
   border-color: var(--primary);
 }
-
 .carrossel-swiper .swiper-button-next:hover::after,
 .carrossel-swiper .swiper-button-prev:hover::after {
   color: white;
 }
 
-/* Paginação */
+/* Paginação (Bolinhas) */
 .carrossel-swiper .swiper-pagination-bullet-active {
   background-color: var(--primary);
 }
 
-/* AJUSTES RESPONSIVOS */
-@media (max-width: 768px) {
-  .carrossel-container {
-    padding: 0 40px;
-  }
-  
-  .carrossel-swiper .swiper-button-next,
-  .carrossel-swiper .swiper-button-prev {
-    display: none;
-  }
-  
-  .carrossel-swiper {
-    padding: 0 10px 50px !important;
-  }
-  
-  .carrossel-swiper .remedio_card {
-    width: 250px;
-    transform: scale(0.9);
-  }
+
+/* --- ANIMAÇÕES GERAIS --- */
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 480px) {
-  .carrossel-container {
-    padding: 0 20px;
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+  /* Header */
+  .container-layout { flex-direction: column; height: auto; padding: 15px 0; }
+  .header-logo { width: 100%; text-align: center; }
+  .nav-center-group { 
+    margin-top: 15px; 
+    flex-wrap: wrap; /* Quebra a linha se não couber */
+    justify-content: center;
+    gap: 10px;
+  }
+  .user-right-group { 
+    width: 100%; 
+    justify-content: center; 
+    margin-top: 15px; 
   }
   
-  .carrossel-swiper .remedio_card {
-    width: 220px;
-    transform: scale(0.85);
+  /* Hero */
+  .hero-section { flex-direction: column; text-align: center; }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-image img { max-width: 200px; }
+  
+  /* Admin Header */
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Carrossel */
+  .carrossel-container {
+    padding: 0 10px;
+  }
+  .carrossel-swiper .swiper-button-next,
+  .carrossel-swiper .swiper-button-prev {
+    display: none; /* Esconde setas no mobile */
   }
 }
