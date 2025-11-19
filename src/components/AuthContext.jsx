@@ -4,15 +4,12 @@ const AuthContext = createContext(null);
 
 
 export function AuthProvider({children}){
-    const [perfil, set_perfil] = useState(null);
-
     
-    useEffect(() => {
-
-        const [perfil, set_perfil] = useState(() =>{
-            return localStorage.getItem('perfil_usuario') || null;
-        })
-    })
+    
+    const [perfil, set_perfil] = useState(() =>{
+            const perfil_salvo = localStorage.getItem('perfil_usuario');
+            return perfil_salvo || null;
+        });
         
 
     const login = (perfil_user, email_user = null) =>{
