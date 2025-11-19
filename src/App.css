@@ -428,13 +428,14 @@ h2#pedidos_titulo {
   background-color: #e5e7eb;
 }
 
-/* --- CARROSSEL (VERSÃO 1 SLIDE POR VEZ) --- */
+/* --- CARROSSEL (LIMPO E CORRIGIDO) --- */
 .carrossel-container {
   position: relative;
   max-width: 1200px;
   margin: 40px auto;
-  padding: 0 80px; /* Mais espaço para setas coladas */
+  padding: 0 50px; /* Espaço para as setas não ficarem em cima */
 }
+
 .carrossel-container h2 {
   text-align: center;
   font-size: 2.2rem;
@@ -443,42 +444,13 @@ h2#pedidos_titulo {
   font-weight: 800;
   letter-spacing: -1px;
 }
-.carrossel-swiper {
-  padding-bottom: 50px !important;
-  overflow: visible !important; /* Importante para setas não cortarem */
-}
-/* Faz o slide único não esticar demais */
-.carrossel-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100% !important; /* Força largura total do container */
-}
-
-.carrossel-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100% !important; /* Força largura total do container */
-}
-
-.carrossel-swiper .remedio_card:hover {
-  transform: scale(0.98) translateY(-5px);
-}
-
-.carrossel-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 10px; /* Espaço reduzido para setas mais próximas */
-}
 
 .carrossel-swiper {
   padding-bottom: 50px !important;
-  overflow: visible !important;
+  overflow: visible !important; /* Permite sombra vazar sem cortar */
 }
 
-/* CONFIGURAÇÃO DO SLIDE ÚNICO */
+/* Slide Único Centralizado */
 .carrossel-swiper .swiper-slide {
   display: flex;
   justify-content: center;
@@ -486,18 +458,20 @@ h2#pedidos_titulo {
   width: 100% !important;
 }
 
+/* Card dentro do Carrossel */
 .carrossel-swiper .remedio_card {
-  width: 300px !important; /* Largura fixa */
+  width: 300px !important; /* Largura fixa bonita */
   margin: 0 auto;
   transform: scale(0.95);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carrossel-swiper .remedio_card:hover {
-  transform: scale(0.98) translateY(-5px);
+  transform: scale(1); /* Cresce levemente ao passar o mouse */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* SETAS CORRETAMENTE COLADAS */
+/* SETAS PERSONALIZADAS */
 .carrossel-swiper .swiper-button-next,
 .carrossel-swiper .swiper-button-prev {
   background: var(--bg-card);
@@ -506,59 +480,82 @@ h2#pedidos_titulo {
   border-radius: 50%;
   box-shadow: var(--shadow);
   border: 2px solid #f3f4f6;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-top: 0;
-  z-index: 20;
+  color: var(--primary);
   transition: all 0.3s ease;
 }
 
-/* SETAS COLADAS NOS CARDS - POSIÇÃO CORRETA */
-.carrossel-swiper .swiper-button-next { 
-  right: 5px !important; /* Colada no container */
-}
-
-.carrossel-swiper .swiper-button-prev { 
-  left: 5px !important; /* Colada no container */
-}
-
-/* Ícones das setas */
 .carrossel-swiper .swiper-button-next::after,
 .carrossel-swiper .swiper-button-prev::after {
   font-size: 1.1rem;
   font-weight: bold;
-  color: var(--primary);
 }
 
 .carrossel-swiper .swiper-button-next:hover,
 .carrossel-swiper .swiper-button-prev:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: white;
 }
 
-.carrossel-swiper .swiper-button-next:hover::after,
-.carrossel-swiper .swiper-button-prev:hover::after {
-  color: white; /* CORRIGIDO: era "none" */
-}
-
-/* Paginação */
+/* Paginação (Bolinhas) */
 .carrossel-swiper .swiper-pagination-bullet-active {
-  background-color: var(--primary);
+  background-color: var(--primary) !important;
 }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
-  .carrossel-container {
-    padding: 0 20px;
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
   }
   
+  .hero-content h1 { font-size: 2rem; }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .carrossel-container { padding: 0 10px; }
+  
+  /* Esconde setas no celular */
   .carrossel-swiper .swiper-button-next,
   .carrossel-swiper .swiper-button-prev {
-    display: none;
+    display: none; 
   }
-  
-  .carrossel-swiper .remedio_card {
-    width: 280px !important;
-    transform: scale(0.9);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Sobe um pouquinho */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
