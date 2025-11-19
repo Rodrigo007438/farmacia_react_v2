@@ -559,3 +559,40 @@ h2#pedidos_titulo {
     transform: translateY(0);
   }
 }
+
+.login_card form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha tudo à esquerda */
+  margin-bottom: 15px;
+}
+
+/* Estilo dos Textos (Labels) */
+.login_card label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+/* Estilo dos Inputs (Iguais aos do modal de pedidos) */
+.login_card input, 
+.login_card select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box; /* Importante para não estourar a caixa */
+}
+
+/* Efeito ao clicar no input */
+.login_card input:focus,
+.login_card select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  background-color: white;
+}
