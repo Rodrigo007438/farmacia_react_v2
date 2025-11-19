@@ -6,7 +6,7 @@ import '../App.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function register_page(){
+function Register_page(){
     const [form_data, set_data] = useState({
         name:'',
         email:'',
@@ -96,5 +96,5 @@ function register_page(){
 
 }
 
-export default register_page;
+export default Register_page;
 
