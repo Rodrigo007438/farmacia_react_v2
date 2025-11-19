@@ -30,7 +30,8 @@ function AdminProdutos(){
     const [form_data, set_form_data] = useState({
         name: '',
         preco: '',
-        quantidade_estoque: ''
+        quantidade_estoque: '',
+        promocao: false
     });
 
     //Para Adicionar Novo
@@ -150,10 +151,10 @@ function AdminProdutos(){
                 )           
              );
 
-             toast.success('Produto Atulizado com Sucesso!');
+             toast.success('Produto Atualizado com Sucesso!');
              fechar_modal_edt();
         }catch(error){
-            console.log('Erro ao digitar produto', error);
+            console.log('Erro ao editar produto', error);
             toast.error(error.message || 'Falha ao editar produto');
         }
     }
