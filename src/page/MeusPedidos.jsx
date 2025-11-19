@@ -52,7 +52,7 @@ function MeusPedidos() {
             <p style={{textAlign:'center'}}>Você não fez nenhum pedido.</p>
           ):(
             pedidosFiltrados.map((pedido) => (
-              <div key={pedido.id} className='pedido_card'>
+              <div key={pedido._id} className='pedido_card'>
                 <h4>Pedido de: {pedido.nome_cliente}</h4>
                 <p>Email: {pedido.email_cliente}</p>
                 <hr />
