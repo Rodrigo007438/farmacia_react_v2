@@ -22,7 +22,7 @@ function App(){
   return(
     <AuthProvider>
     <BrowserRouter>
-    <ToastContainer autoClose={300} hideProgressBar />
+    <ToastContainer autoClose={3000} hideProgressBar />
       <Routes>
 
         <Route element={<LayoutPrincipal />}>
