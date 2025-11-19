@@ -13,6 +13,7 @@
     function LoginPage(){
         const [email, set_email] = useState('');
         const [senha, set_senha] = useState('');
+        const [loading, set_loading] = useState(false);
 
         //Hook de navegação
         const navigate = useNavigate();
@@ -21,6 +22,7 @@
 
         const enviar_login = async (event) => {
             event.preventDefault();
+            set_loading(true);
 
             try{
                 console.log("Tentando logar em:", `${API_URL}/auth/login`);
@@ -46,6 +48,9 @@
                 console.error('Erro no login:', error);
                 toast.error('Erro ao conectar com o servidor.');
             }
+            finally{
+                set_loading(false);
+            }
         };
         return(
             <>
@@ -55,13 +60,13 @@
                     <form id='form_login' onSubmit={enviar_login}>
                         <div>
                             <label htmlFor='email'>Email:</label>
-                            <input type='text' id='email' placeholder="Digite seu email" value={email} onChange={(e) => set_email (e.target.value)} />
+                            <input type='email' id='email' placeholder="Digite seu email" value={email} onChange={(e) => set_email (e.target.value)} />
                         </div>
                         <div>
                             <label htmlFor='password'>Senha</label>
                             <input type='password' id='password' placeholder='Digite sua senha' value={senha} onChange={(e) => set_senha(e.target.value)}/>
                         </div>
-                        <button type='submit'>Entrar</button>
+                        <button type='submit' disabled={loading}>{loading ? 'Entrando...':'Entrar'}</button>
 
                         <p style={{textAlign: 'center', marginTop: '15px'}}>
                         Não tem conta? <Link to="/cadastro" style={{color: '#28a745', fontWeight: 'bold'}}>Cadastre-se</Link>
