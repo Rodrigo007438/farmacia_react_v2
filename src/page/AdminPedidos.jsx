@@ -83,12 +83,12 @@ function AdminPedidos(){
 
         try{
             await atualizar_estoque(remedio_id, novo_estoque);
-            await fetch(`${API_URL}/pedidos/${deleta.id}`, {method:'DELETE'});
+            await fetch(`${API_URL}/pedidos/${deleta._id}`, {method:'DELETE'});
             toast.success('Pedido cancelado e estornado com sucesso!');
             set_pedidos(pedidos_antigos => pedidos_antigos.filter(p =>p._id !== deleta._id));
         }catch(error){
             console.error('Erro ao deletar pedido', error);
-            toast.error('Pedido cancelado e estornado com sucesso');
+            toast.error('Erro ao cancelar pedido. Tente novamente');
         }finally{
             cancela();
         }
