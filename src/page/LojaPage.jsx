@@ -70,11 +70,12 @@ function LojaPage(){
     return;
   }
 
-  const preco_sujo = String(remedio_selecionado.preco);
+  let preco_unitario = remedio_selecionado.preco;
 
-  const preco_limpo = preco_sujo.replace(/[^0-9,]/g, '').replace(',','.');
+  if(typeof preco_unitario === 'string'){
+    preco_unitario = Number(preco_unitario.replace(',','.'));
+  }
 
-  const preco_unitario = Number(preco_limpo);
   const calculo_total = preco_unitario * quantidade_final;
   const dados_pedidos = {
     remedio_nome: remedio_selecionado.name,
@@ -84,7 +85,7 @@ function LojaPage(){
     quantidade_pedida: quantidade_final
    };
 
-   const remedio_id = remedio_selecionado.id;
+   const remedio_id = remedio_selecionado._id;
    const estoque_atual = Number(remedio_selecionado.quantidade_estoque);
    const novo_estoque = estoque_atual - quantidade_final;
 
@@ -124,7 +125,7 @@ function LojaPage(){
 
     <main id='catalogo_remedios'>
       {produto_filtrado.map((remedio) => (
-      <div key={remedio.id} className='remedio_card'>
+      <div key={remedio._id} className='remedio_card'>
         <img src={remedio.imagem_url || remedio.avatar} alt={remedio.name} />
         <h3>{remedio.name}</h3>
         <p className='preco'>R$ {remedio.preco}</p>
