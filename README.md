@@ -2,7 +2,7 @@
 
 Veja com os proprios olhos:
 
- -- ((https://farmacia-react-v2.vercel.app/](https://farmacia-react-v2.vercel.app/)) --
+ -- https://farmacia-react-v2.vercel.app/](https://farmacia-react-v2.vercel.app/ --
 
 ## 💻 Sobre o projeto
 
