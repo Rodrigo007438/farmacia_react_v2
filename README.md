@@ -1,6 +1,8 @@
 # 💊 Sistema de Gestão de Farmácia (Full Stack)
 
-![Badge em Desenvolvimento][(http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge](https://farmacia-react-v2.vercel.app/))
+Veja com os proprios olhos:
+
+ -- ((https://farmacia-react-v2.vercel.app/](https://farmacia-react-v2.vercel.app/)) --
 
 ## 💻 Sobre o projeto
 
