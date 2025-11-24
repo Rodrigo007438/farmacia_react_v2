@@ -29,14 +29,6 @@ O maior diferencial deste projeto é o **Controle de Acesso (RBAC)**, onde a int
 
 ---
 
-## 🎨 Layout
-
-
-
-![Login Screen](<img width="1582" height="601" alt="image" src="https://github.com/user-attachments/assets/83888ab0-ef1e-44ff-aae1-d120334b8b62" />)
-![Dashboard Screen](<img width="1581" height="896" alt="image" src="https://github.com/user-attachments/assets/b6bf9935-7f18-4f56-8b9b-cb0644d8698b" />)
-
----
 
 ## 🛠 Tecnologias Utilizadas
 
