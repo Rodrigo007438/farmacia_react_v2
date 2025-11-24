@@ -4,7 +4,7 @@
 
 ## 💻 Sobre o projeto
 
-O **PharmaSystem** (escolha um nome para seu projeto) é uma aplicação Web completa desenvolvida para gerenciar o fluxo de uma farmácia. O projeto foi criado para resolver a necessidade de controle de estoque e vendas, com foco na segurança e na distinção de níveis de acesso.
+O Sistema Farmacia Popular é uma aplicação Web completa desenvolvida para gerenciar o fluxo de uma farmácia. O projeto foi criado para resolver a necessidade de controle de estoque e vendas, com foco na segurança e na distinção de níveis de acesso.
 
 O maior diferencial deste projeto é o **Controle de Acesso (RBAC)**, onde a interface e as funcionalidades mudam dinamicamente dependendo se o usuário logado é um **Cliente** ou um **Gerente**.
 
@@ -31,10 +31,10 @@ O maior diferencial deste projeto é o **Controle de Acesso (RBAC)**, onde a int
 
 ## 🎨 Layout
 
-> **Dica:** Coloque aqui prints das telas ou um GIF do sistema funcionando. Isso valoriza muito!
 
-![Login Screen](insira_link_da_imagem_aqui)
-![Dashboard Screen](insira_link_da_imagem_aqui)
+
+![Login Screen](<img width="1582" height="601" alt="image" src="https://github.com/user-attachments/assets/83888ab0-ef1e-44ff-aae1-d120334b8b62" />)
+![Dashboard Screen](<img width="1581" height="896" alt="image" src="https://github.com/user-attachments/assets/b6bf9935-7f18-4f56-8b9b-cb0644d8698b" />)
 
 ---
 
