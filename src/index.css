@@ -3,10 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Tema Claro (Padrão de Farmácia) */
+
   color-scheme: light;
   color: #213547;
-  background-color: #f8f9fa; /* Cinza bem clarinho */
+  background-color: #f8f9fa; 
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,7 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Reset Básico */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,7 +23,7 @@
 
 a {
   font-weight: 500;
-  color: #28a745; /* Verde Farmácia */
+  color: #28a745;
   text-decoration: inherit;
   transition: 0.3s;
 }
@@ -36,7 +36,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* REMOVI O DISPLAY FLEX DAQUI PARA O HEADER FICAR NO TOPO */
+
 }
 
 h1 {
@@ -51,7 +51,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #28a745; /* Botão Verde */
+  background-color: #28a745; 
   color: white;
   cursor: pointer;
   transition: background-color 0.25s;
