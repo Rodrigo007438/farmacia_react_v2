@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '../App.css';
 import { toast } from 'react-toastify';
 
-// A URL da API (necessária)
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function MeusPedidos() {
@@ -11,7 +11,7 @@ function MeusPedidos() {
   const [emailLogado, setEmailLogado] = useState('');
 
   useEffect(() => {
-    // 1. Pega o email do usuário logado
+   
     const email = localStorage.getItem('email_usuario');
     if (email) {
       setEmailLogado(email);
@@ -20,7 +20,7 @@ function MeusPedidos() {
     async function buscarPedidos() {
       setLoading(true);
       try {
-        // 2. Busca TODOS os pedidos na API
+  
         const response = await fetch(`${API_URL}/pedidos`);
         const data = await response.json();
         setPedidos(data);
@@ -34,7 +34,7 @@ function MeusPedidos() {
     buscarPedidos();
   }, []);
 
-  // 3. Filtra a lista de pedidos para mostrar apenas os do email logado
+ 
   const pedidosFiltrados = pedidos.filter(
     (pedido) => pedido.email_cliente === emailLogado
   );
@@ -58,7 +58,7 @@ function MeusPedidos() {
                 <hr />
                 <p><strong>Remedio: </strong>{pedido.quantidade_pedida || 1} x {pedido.remedio_nome}</p>
                 <p><strong>Preço Total: </strong>R$ {pedido.remedio_preco}</p>
-                {/* Esta página (do cliente) não tem o botão de cancelar */}
+               
               </div>
             ))
           )}
